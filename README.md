@@ -86,23 +86,16 @@ pip install awscli
 apt-get install libsndfile1
 apt-get install sox
 apt-get install ffmpeg
+apt-get install wget
 ```
 
-Download pretrained models and example files
+Download pretrained models and example files and untar in one shot
 ```Bash
-cd checkpoints
-wget https://github.com/adobe-research/DeepAFx-ST/releases/download/v0.1.0/proxies.tar.gz -O checkpoints
-wget https://github.com/adobe-research/DeepAFx-ST/releases/download/v0.1.0/style.tar.gz -O checkpoints
-wget https://github.com/adobe-research/DeepAFx-ST/releases/download/v0.1.0/probes.tar.gz -O checkpoints
-wget https://github.com/adobe-research/DeepAFx-ST/releases/download/v0.1.0/cdpam.tar.gz -O checkpoints
-wget https://github.com/adobe-research/DeepAFx-ST/releases/download/v0.1.0/examples.tar.gz -O examples
+cd <DeepAFx-ST>
+wget https://github.com/adobe-research/DeepAFx-ST/releases/download/v0.1.0/checkpoints_and_examples.tar.gz -O - | tar -xz
+
 ```
 Note, you can also find our pretrained checkpoints via the Github UI stored in a tagged release at [https://github.com/adobe-research/DeepAFx-ST/tags](https://github.com/adobe-research/DeepAFx-ST/tags).
-
-Uncompress from tar.gz
-```Bash
-tar -xvf proxies.tar.gz probes.tar.gz style.tar.gz cdpam.tar.gz
-```
 
 After download and untar'ing, your `checkpoint` and `examples` folder structures should be the following:
 ```Bash
@@ -114,7 +107,6 @@ After download and untar'ing, your `checkpoint` and `examples` folder structures
 <DeepAFx-ST>/examples/voice_raw.wav
 <DeepAFx-ST>/examples/voice_produced.wav
 ```
-You can discard the *tar.gz files or store for backup. 
 
 
 ## Inference
@@ -149,8 +141,7 @@ python scripts/process.py -i examples/voice_raw.wav -r examples/voice_produced.w
 
 ### Datasets
 
-Training and evaluating the models will require one or more of the datasets. 
-Download all the datasets with the following. 
+Training and evaluating the models will require one or more of the datasets. Download all the datasets with the following. 
 
 ```
 python scripts/download.py --datasets daps vctk jamendo libritts musdb --output /path/to/output --download --process
@@ -161,7 +152,7 @@ You can download individual datasets if desired.
 ```
 python scripts/download.py --datasets daps --output /path/to/output --download --process
 ```
-Note, data download can take several days due to the dataset server speeds. We recommend downloading once and making your own storage setup.
+Note, data download can take several days due to the dataset server speeds. We recommend downloading once and making your own storage setup. You will need approx. 1TB of local storage space to download and pre-process all datasets.
 
 ### Style transfer
 
