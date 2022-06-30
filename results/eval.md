@@ -1,15 +1,15 @@
 ## LibriTTS @ 24kHz (test)
 
 CUDA_VISIBLE_DEVICES=4 python scripts/eval.py \
-/import/c4dm-datasets/deepafx2/logs/style/libritts/ \
---root_dir /import/c4dm-datasets/deepafx2/ \
+/import/c4dm-datasets/deepafx_st/logs/style/libritts/ \
+--root_dir /import/c4dm-datasets/deepafx_st/ \
 --gpu \
 --spsa_version 2 \
 --tcn1_version 1 \
 --autodiff_version 1 \
 --tcn2_version 1 \
 --subset test \
---output /import/c4dm-datasets/deepafx2/
+--output /import/c4dm-datasets/deepafx_st/
 --save \
 
 1000
@@ -53,8 +53,8 @@ Evaluation complete.
 ## DAPS @ 24kHz (train) (we don't train with train set)
 
 CUDA_VISIBLE_DEVICES=0 python scripts/eval.py \
-/import/c4dm-datasets/deepafx2/logs/style/libritts/ \
---root_dir /import/c4dm-datasets/deepafx2/ \
+/import/c4dm-datasets/deepafx_st/logs/style/libritts/ \
+--root_dir /import/c4dm-datasets/deepafx_st/ \
 --gpu \
 --dataset daps \
 --dataset_dir daps_24000/cleanraw \
@@ -63,7 +63,7 @@ CUDA_VISIBLE_DEVICES=0 python scripts/eval.py \
 --autodiff_version 1 \
 --tcn2_version 1 \
 --subset train \
---output /import/c4dm-datasets/deepafx2/
+--output /import/c4dm-datasets/deepafx_st/
 #--save \
 
 1000
@@ -109,8 +109,8 @@ Evaluation complete.
 ## VCTK @ 24kHz (train) (we don't train with train set)
 
 CUDA_VISIBLE_DEVICES=4 python scripts/eval.py \
-/import/c4dm-datasets/deepafx2/logs/style/libritts/ \
---root_dir /import/c4dm-datasets/deepafx2/ \
+/import/c4dm-datasets/deepafx_st/logs/style/libritts/ \
+--root_dir /import/c4dm-datasets/deepafx_st/ \
 --gpu \
 --dataset vctk \
 --dataset_dir vctk_24000 \
@@ -119,7 +119,7 @@ CUDA_VISIBLE_DEVICES=4 python scripts/eval.py \
 --autodiff_version 1 \
 --tcn2_version 1 \
 --subset train \
---output /import/c4dm-datasets/deepafx2/
+--output /import/c4dm-datasets/deepafx_st/
 
 1000
 
@@ -163,9 +163,9 @@ Evaluation complete.
 
 ## Style case study (SPSA)
 CUDA_VISIBLE_DEVICES=7 python scripts/style_case_study.py \
---ckpt_path "/import/c4dm-datasets/deepafx2/logs/style/libritts/spsa/lightning_logs/version_2/checkpoints/epoch=367-step=1226911-val-libritts-spsa.ckpt" \
---input_audio "/import/c4dm-datasets/deepafx2/vctk_24000" \
---style_audio "/import/c4dm-datasets/deepafx2/daps_24000_styles/val" \
+--ckpt_path "/import/c4dm-datasets/deepafx_st/logs/style/libritts/spsa/lightning_logs/version_2/checkpoints/epoch=367-step=1226911-val-libritts-spsa.ckpt" \
+--input_audio "/import/c4dm-datasets/deepafx_st/vctk_24000" \
+--style_audio "/import/c4dm-datasets/deepafx_st/daps_24000_styles/val" \
 --gpu \
 
 10 inputs x 10 examples per style
@@ -198,11 +198,11 @@ Corrupt: PESQ 1.138  MRSTFT 2.530  MSD 3.703  SCE 565.930  CFE 14.402  RMS 14.40
 ## Style case study
 CUDA_VISIBLE_DEVICES=4 python scripts/style_case_study.py \
 --ckpt_paths \
-"/import/c4dm-datasets/deepafx2/logs/style/libritts/spsa/lightning_logs/version_2/checkpoints/epoch=367-step=1226911-val-libritts-spsa.ckpt" \
-"/import/c4dm-datasets/deepafx2/logs/style/libritts/autodiff/lightning_logs/version_1/checkpoints/epoch=367-step=1226911-val-libritts-autodiff.ckpt" \
-"/import/c4dm-datasets/deepafx2/logs/style/libritts/proxy0/lightning_logs/version_0/checkpoints/epoch=327-step=1093551-val-libritts-proxy0.ckpt" \
---style_audio "/import/c4dm-datasets/deepafx2/daps_24000_styles_1000_diverse/train" \
---output_dir "/import/c4dm-datasets/deepafx2/style_case_study" \
+"/import/c4dm-datasets/deepafx_st/logs/style/libritts/spsa/lightning_logs/version_2/checkpoints/epoch=367-step=1226911-val-libritts-spsa.ckpt" \
+"/import/c4dm-datasets/deepafx_st/logs/style/libritts/autodiff/lightning_logs/version_1/checkpoints/epoch=367-step=1226911-val-libritts-autodiff.ckpt" \
+"/import/c4dm-datasets/deepafx_st/logs/style/libritts/proxy0/lightning_logs/version_0/checkpoints/epoch=327-step=1093551-val-libritts-proxy0.ckpt" \
+--style_audio "/import/c4dm-datasets/deepafx_st/daps_24000_styles_1000_diverse/train" \
+--output_dir "/import/c4dm-datasets/deepafx_st/style_case_study" \
 --gpu \
 #--save \
 #--plot \
@@ -412,7 +412,7 @@ Corrupt    MSD: 12.278  SCE: 366.978  RMS: 2.604  LUFS: 1.345
 ## Jamendo @ 24kHz (test)
 
 CUDA_VISIBLE_DEVICES=4 python scripts/eval.py \
-/import/c4dm-datasets/deepafx2/logs_jamendo/style/jamendo/ \
+/import/c4dm-datasets/deepafx_st/logs_jamendo/style/jamendo/ \
 --root_dir /import/c4dm-datasets/mtg-jamendo-raw/mtg-jamendo-dataset/ \
 --gpu \
 --dataset jamendo \
@@ -424,7 +424,7 @@ CUDA_VISIBLE_DEVICES=4 python scripts/eval.py \
 --subset test \
 --save \
 --ext flac \
---output /import/c4dm-datasets/deepafx2/
+--output /import/c4dm-datasets/deepafx_st/
 
 1000
 
@@ -502,8 +502,8 @@ Evaluation complete.
 ## MUSDB18 @ 44.1kHz (train)
 
 CUDA_VISIBLE_DEVICES=4 python scripts/eval.py \
-/import/c4dm-datasets/deepafx2/logs_jamendo/style/jamendo/ \
---root_dir /import/c4dm-datasets/deepafx2 \
+/import/c4dm-datasets/deepafx_st/logs_jamendo/style/jamendo/ \
+--root_dir /import/c4dm-datasets/deepafx_st \
 --gpu \
 --dataset musdb18_44100 \
 --dataset_dir musdb18_44100/ \
@@ -515,7 +515,7 @@ CUDA_VISIBLE_DEVICES=4 python scripts/eval.py \
 --length 262144 \
 --save \
 --ext wav \
---output /import/c4dm-datasets/deepafx2/
+--output /import/c4dm-datasets/deepafx_st/
 
 1000
 
@@ -551,8 +551,8 @@ Evaluation complete.
 ## MUSDB18 @ 24kHz (train)
 quota
 CUDA_VISIBLE_DEVICES=4 python scripts/eval.py \
-/import/c4dm-datasets/deepafx2/logs_jamendo/style/jamendo/ \
---root_dir /import/c4dm-datasets/deepafx2 \
+/import/c4dm-datasets/deepafx_st/logs_jamendo/style/jamendo/ \
+--root_dir /import/c4dm-datasets/deepafx_st \
 --gpu \
 --dataset musdb18_24000 \
 --dataset_dir musdb18_24000/ \
@@ -564,7 +564,7 @@ CUDA_VISIBLE_DEVICES=4 python scripts/eval.py \
 --length 131072 \
 --save \
 --ext wav \
---output /import/c4dm-datasets/deepafx2/
+--output /import/c4dm-datasets/deepafx_st/
 
 1000
 
@@ -584,7 +584,7 @@ Evaluation complete.
 ## Jamendo @ 44.1kHz (test)
 
 CUDA_VISIBLE_DEVICES=4 python scripts/eval.py \
-/import/c4dm-datasets/deepafx2/logs_jamendo/style/jamendo/ \
+/import/c4dm-datasets/deepafx_st/logs_jamendo/style/jamendo/ \
 --root_dir /import/c4dm-datasets/mtg-jamendo-raw/mtg-jamendo-dataset/ \
 --gpu \
 --dataset jamendo_44100 \
@@ -597,7 +597,7 @@ CUDA_VISIBLE_DEVICES=4 python scripts/eval.py \
 --length 262144 \
 --save \
 --ext wav \
---output /import/c4dm-datasets/deepafx2/
+--output /import/c4dm-datasets/deepafx_st/
 
 1000
 
@@ -633,8 +633,8 @@ Evaluation complete.
 
 ## Probes 
 CUDA_VISIBLE_DEVICES=0 python scripts/eval_probes.py \
---ckpt_dir /import/c4dm-datasets/deepafx2/logs/probes_new/ \
---eval_dataset /import/c4dm-datasets/deepafx2/daps_24000_styles_1000_diverse/ \
+--ckpt_dir /import/c4dm-datasets/deepafx_st/logs/probes_new/ \
+--eval_dataset /import/c4dm-datasets/deepafx_st/daps_24000_styles_1000_diverse/ \
 --subset test \
 --output_dir probes \
 --gpu \
@@ -665,7 +665,7 @@ cdpam-mlp acc: 100.00%  f1: 1.00
    macro avg       1.00      1.00      1.00       500
 weighted avg       1.00      1.00      1.00       500
 
-deepafx2-linear acc: 97.60%  f1: 0.98
+deepafx_st-linear acc: 97.60%  f1: 0.98
               precision    recall  f1-score   support
 
    broadcast       0.90      0.99      0.94       100
@@ -743,7 +743,7 @@ cdpam-linear acc: 64.20%  f1: 0.58
    macro avg       0.54      0.64      0.58       500
 weighted avg       0.54      0.64      0.58       500
 
-deepafx2-mlp acc: 98.20%  f1: 0.98
+deepafx_st-mlp acc: 98.20%  f1: 0.98
               precision    recall  f1-score   support
 
    broadcast       0.92      1.00      0.96       100
@@ -1180,11 +1180,11 @@ Corrupt    MSD: 10.398  SCE: 1041.654  RMS: 10.414  LUFS: 3.649
 
 CUDA_VISIBLE_DEVICES=1 python scripts/style_case_study.py \
 --ckpt_paths \
-"/import/c4dm-datasets/deepafx2/logs_jamendo/style/jamendo/autodiff/lightning_logs/version_0/checkpoints/epoch=362-step=1210241-val-jamendo-autodiff.ckpt" \
-"/import/c4dm-datasets/deepafx2/logs_jamendo/style/jamendo/spsa/lightning_logs/version_0/checkpoints/epoch=362-step=1210241-val-jamendo-spsa.ckpt" \
-"/import/c4dm-datasets/deepafx2/logs_jamendo/style/jamendo/proxy0/lightning_logs/version_0/checkpoints/epoch=362-step=1210241-val-jamendo-proxy0.ckpt" \
---style_audio "/import/c4dm-datasets/deepafx2/musdb18_44100_styles_100/train" \
---output_dir "/import/c4dm-datasets/deepafx2/style_case_study_musdb18" \
+"/import/c4dm-datasets/deepafx_st/logs_jamendo/style/jamendo/autodiff/lightning_logs/version_0/checkpoints/epoch=362-step=1210241-val-jamendo-autodiff.ckpt" \
+"/import/c4dm-datasets/deepafx_st/logs_jamendo/style/jamendo/spsa/lightning_logs/version_0/checkpoints/epoch=362-step=1210241-val-jamendo-spsa.ckpt" \
+"/import/c4dm-datasets/deepafx_st/logs_jamendo/style/jamendo/proxy0/lightning_logs/version_0/checkpoints/epoch=362-step=1210241-val-jamendo-proxy0.ckpt" \
+--style_audio "/import/c4dm-datasets/deepafx_st/musdb18_44100_styles_100/train" \
+--output_dir "/import/c4dm-datasets/deepafx_st/style_case_study_musdb18" \
 --sample_rate 44100 \
 --gpu \
 --save \

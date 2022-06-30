@@ -52,11 +52,11 @@ if __name__ == "__main__":
     # load the model
     if "proxy" in args.ckpt:
         logdir = os.path.dirname(os.path.dirname(args.ckpt))
-        pckpt_dir = os.path.join(logdir, "pretrained_checkpoints")
-        print(f"Loading proxy models from {pckpt_dir}")
-        pckpts = glob.glob(os.path.join(pckpt_dir, "*.ckpt"))
-        peq_ckpt = [pc for pc in pckpts if "peq" in pc][0]
-        comp_ckpt = [pc for pc in pckpts if "comp" in pc][0]
+        # Assumes speech proxies in specific location
+        pckpts = 'checkpoints'
+        peq_ckpt = os.path.join(pckpts, "proxies/libritts/peq/lightning_logs/version_1/checkpoints/epoch=111-step=139999-val-libritts-peq.ckpt" )
+        comp_ckpt = os.path.join(pckpts, "proxies/libritts/comp/lightning_logs/version_1/checkpoints/epoch=255-step=319999-val-libritts-comp.ckpt" )
+
         proxy_ckpts = [peq_ckpt, comp_ckpt]
         print(f"Found {len(proxy_ckpts)}: {proxy_ckpts}")
         dsp_mode = DSPMode.INFER
@@ -161,3 +161,6 @@ if __name__ == "__main__":
     print(f"Saved output to {out_filepath}")
     torchaudio.save(out_filepath, y_hat.cpu().view(1, -1), 24000)
     torchaudio.save(in_filepath, x_24000.cpu().view(1, -1), 24000)
+
+    system.shutdown()
+

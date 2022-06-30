@@ -493,6 +493,8 @@ class System(pl.LightningModule):
             persistent_workers=True,
             timeout=60,
         )
+    def shutdown(self):
+        del self.processor
 
     # add any model hyperparameters here
     @staticmethod

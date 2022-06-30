@@ -1,6 +1,6 @@
 checkpoint_dir="./checkpoints"
-root_dir="/import/c4dm-datasets/deepafx2/" # path to audio datasets
-output_dir="/import/c4dm-datasets/deepafx2/eval" # path to store audio utputs
+root_dir="/import/c4dm-datasets/deepafx_st/" # path to audio datasets
+output_dir="/import/c4dm-datasets/deepafx_st/eval" # path to store audio utputs
 
 CUDA_VISIBLE_DEVICES=0 python scripts/eval_probes.py \
 --ckpt_dir "$checkpoint_dir/probes/speech" \
