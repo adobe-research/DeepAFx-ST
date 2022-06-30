@@ -1,8 +1,8 @@
 import torch
 
-from deepafx2.processors.autodiff.compressor import Compressor
-from deepafx2.processors.autodiff.peq import ParametricEQ
-from deepafx2.processors.autodiff.fir import FIRFilter
+from deepafx_st.processors.autodiff.compressor import Compressor
+from deepafx_st.processors.autodiff.peq import ParametricEQ
+from deepafx_st.processors.autodiff.fir import FIRFilter
 
 
 class AutodiffChannel(torch.nn.Module):

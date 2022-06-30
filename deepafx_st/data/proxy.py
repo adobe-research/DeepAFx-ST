@@ -6,9 +6,9 @@ import random
 from tqdm import tqdm
 
 # from deepafx2.plugins.channel import Channel
-from deepafx2.processors.processor import Processor
-from deepafx2.data.audio import AudioFile
-import deepafx2.utils as utils
+from deepafx_st.processors.processor import Processor
+from deepafx_st.data.audio import AudioFile
+import deepafx_st.utils as utils
 
 
 class DSPProxyDataset(torch.utils.data.Dataset):

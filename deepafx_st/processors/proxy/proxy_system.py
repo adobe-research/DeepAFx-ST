@@ -6,12 +6,12 @@ from typing import Tuple, List, Dict
 from argparse import ArgumentParser
 
 
-import deepafx2.utils as utils
-from deepafx2.data.proxy import DSPProxyDataset
-from deepafx2.processors.proxy.tcn import ConditionalTCN
-from deepafx2.processors.spsa.channel import SPSAChannel
-from deepafx2.processors.dsp.peq import ParametricEQ
-from deepafx2.processors.dsp.compressor import Compressor
+import deepafx_st.utils as utils
+from deepafx_st.data.proxy import DSPProxyDataset
+from deepafx_st.processors.proxy.tcn import ConditionalTCN
+from deepafx_st.processors.spsa.channel import SPSAChannel
+from deepafx_st.processors.dsp.peq import ParametricEQ
+from deepafx_st.processors.dsp.compressor import Compressor
 
 
 class ProxySystem(pl.LightningModule):

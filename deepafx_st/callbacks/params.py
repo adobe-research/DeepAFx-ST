@@ -2,7 +2,7 @@ import numpy as np
 import pytorch_lightning as pl
 import matplotlib.pyplot as plt
 
-import deepafx2.utils as utils
+import deepafx_st.utils as utils
 
 
 class LogParametersCallback(pl.callbacks.Callback):

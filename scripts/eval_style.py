@@ -10,11 +10,11 @@ import numpy as np
 import pytorch_lightning as pl
 from multiprocessing import process
 
-from deepafx2.utils import DSPMode, seed_worker
-from deepafx2.system import System
-from deepafx2.data.dataset import AudioDataset
-from deepafx2.models.baselines import BaselineEQAndComp
-from deepafx2.metrics import (
+from deepafx_st.utils import DSPMode, seed_worker
+from deepafx_st.system import System
+from deepafx_st.data.dataset import AudioDataset
+from deepafx_st.models.baselines import BaselineEQAndComp
+from deepafx_st.metrics import (
     LoudnessError,
     RMSEnergyError,
     SpectralCentroidError,
@@ -22,7 +22,6 @@ from deepafx2.metrics import (
     PESQ,
     MelSpectralDistance,
 )
-
 
 if __name__ == "__main__":
 
@@ -238,11 +237,11 @@ if __name__ == "__main__":
 
         # search for pre-trained models
         if "m" in processor_model_id:
-            peq_ckpt = "/import/c4dm-datasets/deepafx2/logs_music_proxies/proxies/jamendo/peq/lightning_logs/version_0/checkpoints/epoch=326-step=204374-val-jamendo-peq.ckpt"
-            comp_ckpt = "/import/c4dm-datasets/deepafx2/logs_music_proxies/proxies/jamendo/comp/lightning_logs/version_0/checkpoints/epoch=274-step=171874-val-jamendo-comp.ckpt"
+            peq_ckpt = "checkpoints/proxies/jamendo/peq/lightning_logs/version_0/checkpoints/epoch=326-step=204374-val-jamendo-peq.ckpt"
+            comp_ckpt = "checkpoints/proxies/jamendo/comp/lightning_logs/version_0/checkpoints/epoch=274-step=171874-val-jamendo-comp.ckpt"
         else:
-            peq_ckpt = "/import/c4dm-datasets/deepafx2/logs/proxies/libritts/peq/lightning_logs/version_1/checkpoints/epoch=111-step=139999-val-libritts-peq.ckpt"
-            comp_ckpt = "/import/c4dm-datasets/deepafx2/logs/proxies/libritts/comp/lightning_logs/version_1/checkpoints/epoch=255-step=319999-val-libritts-comp.ckpt"
+            peq_ckpt = "checkpoints/proxies/libritts/peq/lightning_logs/version_1/checkpoints/epoch=111-step=139999-val-libritts-peq.ckpt"
+            comp_ckpt = "checkpoints/proxies/libritts/comp/lightning_logs/version_1/checkpoints/epoch=255-step=319999-val-libritts-comp.ckpt"
 
         if processor_model_id == "proxy0" or processor_model_id == "proxy0m":
             # peq_ckpt = [pc for pc in pckpts if "peq" in pc][0]

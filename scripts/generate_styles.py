@@ -10,8 +10,8 @@ from tqdm import tqdm
 from itertools import repeat
 import pytorch_lightning as pl
 
-from deepafx2.processors.dsp.peq import parametric_eq
-from deepafx2.processors.dsp.compressor import compressor
+from deepafx_st.processors.dsp.peq import parametric_eq
+from deepafx_st.processors.dsp.compressor import compressor
 
 
 def get_random_patch(x, sample_rate, length_samples):

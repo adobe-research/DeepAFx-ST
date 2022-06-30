@@ -4,7 +4,7 @@ import scipy.signal
 import numpy as np
 import pyloudnorm as pyln
 import matplotlib.pyplot as plt
-from deepafx2.processors.dsp.compressor import compressor
+from deepafx_st.processors.dsp.compressor import compressor
 
 from tqdm import tqdm
 

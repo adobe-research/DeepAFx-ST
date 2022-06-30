@@ -4,7 +4,7 @@ import numpy as np
 import scipy.signal
 from numba import jit
 
-from deepafx2.processors.processor import Processor
+from deepafx_st.processors.processor import Processor
 
 
 # Adapted from: https://github.com/drscotthawley/signaltrain/blob/master/signaltrain/audio.py

@@ -1,6 +1,6 @@
 import torch
-from deepafx2.processors.proxy.proxy_system import ProxySystem
-from deepafx2.utils import DSPMode
+from deepafx_st.processors.proxy.proxy_system import ProxySystem
+from deepafx_st.utils import DSPMode
 
 
 class ProxyChannel(torch.nn.Module):

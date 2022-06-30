@@ -4,7 +4,7 @@ from importlib.machinery import SourceFileLoader
 with open("README.md") as file:
     long_description = file.read()
 
-version = SourceFileLoader("deepafx2.version", "deepafx2/version.py").load_module()
+version = SourceFileLoader("deepafx_st.version", "deepafx_st/version.py").load_module()
 
 setup(
     name="deepafx-st",
@@ -13,7 +13,7 @@ setup(
     author="See paper",
     author_email="See paper",
     url="https://git.corp.adobe.com/adobe-research/deepafx-st",
-    packages=["deepafx2"],
+    packages=["deepafx_st"],
     long_description=long_description,
     long_description_content_type="text/markdown",
     license="Copyright Adobe Inc.",

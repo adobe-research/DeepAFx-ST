@@ -18,7 +18,7 @@
 import torch
 from argparse import ArgumentParser
 
-from deepafx2.utils import center_crop, causal_crop
+from deepafx_st.utils import center_crop, causal_crop
 
 
 class FiLM(torch.nn.Module):

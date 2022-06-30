@@ -1,7 +1,7 @@
 import torch
 import multiprocessing
 from abc import ABC, abstractmethod
-import deepafx2.utils as utils
+import deepafx_st.utils as utils
 import numpy as np
 
 

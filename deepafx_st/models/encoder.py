@@ -1,7 +1,7 @@
 import torch
 
-from deepafx2.models.mobilenetv2 import MobileNetV2
-from deepafx2.models.efficient_net import EfficientNet
+from deepafx_st.models.mobilenetv2 import MobileNetV2
+from deepafx_st.models.efficient_net import EfficientNet
 
 
 class SpectralEncoder(torch.nn.Module):

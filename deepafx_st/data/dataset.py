@@ -7,9 +7,9 @@ import random
 from tqdm import tqdm
 from typing import List, Any
 
-from deepafx2.data.audio import AudioFile
-import deepafx2.utils as utils
-import deepafx2.data.augmentations as augmentations
+from deepafx_st.data.audio import AudioFile
+import deepafx_st.utils as utils
+import deepafx_st.data.augmentations as augmentations
 
 
 class AudioDataset(torch.utils.data.Dataset):
@@ -112,9 +112,12 @@ class AudioDataset(torch.utils.data.Dataset):
         self.sample_rate = input_files[file_id].sample_rate
 
         # save a csv file with details about the train and test split
-        with open(
-            f"configs/splits/{self.dataset_name}_{self.subset}_set.csv", "w"
-        ) as fp:
+        splits_dir = os.path.join("configs", "splits")
+        if not os.path.isdir(splits_dir):
+            os.makedirs(splits_dir)
+        csv_filepath = os.path.join(splits_dir, f"{self.dataset_name}_{self.subset}_set.csv")
+
+        with open(csv_filepath, "w") as fp:
             dw = csv.DictWriter(fp, ["file_id", "filepath", "type", "subset"])
             dw.writeheader()
             for input_filepath in self.input_filepaths:

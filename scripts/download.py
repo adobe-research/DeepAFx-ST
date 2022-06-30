@@ -22,7 +22,7 @@ import multiprocessing
 import soundfile as sf
 
 from tqdm import tqdm
-from deepafx2 import utils
+from deepafx_st import utils
 from argparse import ArgumentParser
 from joblib import Parallel, delayed
 

@@ -2,10 +2,10 @@ import torch
 import numpy as np
 import torch.multiprocessing as mp
 
-from deepafx2.processors.dsp.peq import ParametricEQ
-from deepafx2.processors.dsp.compressor import Compressor
-from deepafx2.processors.spsa.spsa_func import SPSAFunction
-from deepafx2.utils import rademacher
+from deepafx_st.processors.dsp.peq import ParametricEQ
+from deepafx_st.processors.dsp.compressor import Compressor
+from deepafx_st.processors.spsa.spsa_func import SPSAFunction
+from deepafx_st.utils import rademacher
 
 
 def dsp_func(x, p, dsp, sample_rate=24000):

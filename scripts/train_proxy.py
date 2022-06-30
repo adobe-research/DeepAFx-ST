@@ -3,8 +3,8 @@ import torch
 import pytorch_lightning as pl
 from argparse import ArgumentParser
 
-from deepafx2.processors.proxy.proxy_system import ProxySystem
-from deepafx2.callbacks.audio import LogAudioCallback
+from deepafx_st.processors.proxy.proxy_system import ProxySystem
+from deepafx_st.callbacks.audio import LogAudioCallback
 
 torch.backends.cudnn.benchmark = True
 pl.seed_everything(42)

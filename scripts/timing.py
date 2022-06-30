@@ -7,15 +7,15 @@ from tqdm import tqdm
 from itertools import chain
 from time import perf_counter
 
-from deepafx2.models.encoder import SpectralEncoder
-from deepafx2.models.controller import StyleTransferController
-from deepafx2.processors.autodiff.channel import AutodiffChannel
-from deepafx2.processors.proxy.channel import ProxyChannel
-from deepafx2.processors.dsp.compressor import Compressor
-from deepafx2.processors.dsp.peq import ParametricEQ
-from deepafx2.processors.spsa.channel import SPSAChannel
-from deepafx2.utils import DSPMode, count_parameters
-from deepafx2.processors.dsp.compressor import compressor
+from deepafx_st.models.encoder import SpectralEncoder
+from deepafx_st.models.controller import StyleTransferController
+from deepafx_st.processors.autodiff.channel import AutodiffChannel
+from deepafx_st.processors.proxy.channel import ProxyChannel
+from deepafx_st.processors.dsp.compressor import Compressor
+from deepafx_st.processors.dsp.peq import ParametricEQ
+from deepafx_st.processors.spsa.channel import SPSAChannel
+from deepafx_st.utils import DSPMode, count_parameters
+from deepafx_st.processors.dsp.compressor import compressor
 
 
 def run_dsp(x, peq_p, comp_p, peq, comp):

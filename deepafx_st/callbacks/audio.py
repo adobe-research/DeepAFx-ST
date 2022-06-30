@@ -2,8 +2,8 @@ import auraloss
 import numpy as np
 import pytorch_lightning as pl
 
-from deepafx2.callbacks.plotting import plot_multi_spectrum
-from deepafx2.metrics import (
+from deepafx_st.callbacks.plotting import plot_multi_spectrum
+from deepafx_st.metrics import (
     LoudnessError,
     SpectralCentroidError,
     CrestFactorError,

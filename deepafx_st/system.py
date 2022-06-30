@@ -6,15 +6,15 @@ import pytorch_lightning as pl
 from argparse import ArgumentParser
 from typing import Tuple, List, Dict
 
-import deepafx2.utils as utils
-from deepafx2.utils import DSPMode
-from deepafx2.data.dataset import AudioDataset
-from deepafx2.models.encoder import SpectralEncoder
-from deepafx2.models.controller import StyleTransferController
-from deepafx2.processors.spsa.channel import SPSAChannel
-from deepafx2.processors.spsa.eps_scheduler import EpsilonScheduler
-from deepafx2.processors.proxy.channel import ProxyChannel
-from deepafx2.processors.autodiff.channel import AutodiffChannel
+import deepafx_st.utils as utils
+from deepafx_st.utils import DSPMode
+from deepafx_st.data.dataset import AudioDataset
+from deepafx_st.models.encoder import SpectralEncoder
+from deepafx_st.models.controller import StyleTransferController
+from deepafx_st.processors.spsa.channel import SPSAChannel
+from deepafx_st.processors.spsa.eps_scheduler import EpsilonScheduler
+from deepafx_st.processors.proxy.channel import ProxyChannel
+from deepafx_st.processors.autodiff.channel import AutodiffChannel
 
 
 class System(pl.LightningModule):

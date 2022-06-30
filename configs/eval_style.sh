@@ -5,7 +5,7 @@ root_dir="/import/c4dm-datasets/deepafx2/" # path to audio datasets
 output_dir="/import/c4dm-datasets/deepafx2/eval" # path to store audio utputs
 
 # ----------------------- LibriTTS ----------------------- 
-CUDA_VISIBLE_DEVICES="$gpu_id" python scripts/eval.py \
+CUDA_VISIBLE_DEVICES="$gpu_id" python scripts/eval_style.py \
 "$checkpoint_dir/style/libritts/" \
 --root_dir "$root_dir" \
 --gpu \
@@ -21,7 +21,7 @@ CUDA_VISIBLE_DEVICES="$gpu_id" python scripts/eval.py \
 --save \
 
 # ----------------------- DAPS ----------------------- 
-CUDA_VISIBLE_DEVICES="$gpu_id" python scripts/eval.py \
+CUDA_VISIBLE_DEVICES="$gpu_id" python scripts/eval_style.py \
 "$checkpoint_dir/style/libritts/" \
 --root_dir "$root_dir" \
 --gpu \
@@ -37,7 +37,7 @@ CUDA_VISIBLE_DEVICES="$gpu_id" python scripts/eval.py \
 --save \
 
 # ----------------------- VCTK ----------------------- 
-CUDA_VISIBLE_DEVICES="$gpu_id" python scripts/eval.py \
+CUDA_VISIBLE_DEVICES="$gpu_id" python scripts/eval_style.py \
 "$checkpoint_dir/style/libritts/" \
 --root_dir "$root_dir" \
 --gpu \
@@ -52,7 +52,7 @@ CUDA_VISIBLE_DEVICES="$gpu_id" python scripts/eval.py \
 --output "$output_dir" \
 
 # ----------------------- Jamendo @ 24kHz (test) -----------------------
-CUDA_VISIBLE_DEVICES="$gpu_id" python scripts/eval.py \
+CUDA_VISIBLE_DEVICES="$gpu_id" python scripts/eval_style.py \
 "$checkpoint_dir/style/jamendo/" \
 --root_dir "$root_dir" \
 --gpu \
@@ -69,7 +69,7 @@ CUDA_VISIBLE_DEVICES="$gpu_id" python scripts/eval.py \
 --output "$output_dir" \
 
 # ----------------------- Jamendo @ 24kHz (test) -----------------------
-CUDA_VISIBLE_DEVICES="$gpu_id" python scripts/eval.py \
+CUDA_VISIBLE_DEVICES="$gpu_id" python scripts/eval_style.py \
 "$checkpoint_dir/style/jamendo/" \
 --root_dir "$root_dir" \
 --gpu \
@@ -87,7 +87,7 @@ CUDA_VISIBLE_DEVICES="$gpu_id" python scripts/eval.py \
 --output "$output_dir" \
 
 # -----------------------  MUSDB18 @ 24kHz (train) -----------------------
-CUDA_VISIBLE_DEVICES="$gpu_id" python scripts/eval.py \
+CUDA_VISIBLE_DEVICES="$gpu_id" python scripts/eval_style.py \
 "$checkpoint_dir/style/jamendo/" \
 --root_dir "$root_dir" \
 --gpu \
@@ -105,7 +105,7 @@ CUDA_VISIBLE_DEVICES="$gpu_id" python scripts/eval.py \
 --output "$output_dir" \
 
 # -----------------------  MUSDB18 @ 44.1kHz (train) -----------------------
-CUDA_VISIBLE_DEVICES="$gpu_id" python scripts/eval.py \
+CUDA_VISIBLE_DEVICES="$gpu_id" python scripts/eval_style.py \
 "$checkpoint_dir/style/jamendo/" \
 --root_dir "$root_dir" \
 --gpu \

@@ -2,8 +2,8 @@ import math
 import torch
 import scipy.signal
 
-import deepafx2.processors.autodiff.signal
-from deepafx2.processors.processor import Processor
+import deepafx_st.processors.autodiff.signal
+from deepafx_st.processors.processor import Processor
 
 
 @torch.jit.script
@@ -63,10 +63,10 @@ def compressor(
 
     # design 1-pole butterworth lowpass
     fc = 1.0 / (attack_time * sample_rate)
-    b, a = deepafx2.processors.autodiff.signal.butter(fc)
+    b, a = deepafx_st.processors.autodiff.signal.butter(fc)
 
     # apply FIR approx of IIR filter
-    y_L = deepafx2.processors.autodiff.signal.approx_iir_filter(b, a, x_L)
+    y_L = deepafx_st.processors.autodiff.signal.approx_iir_filter(b, a, x_L)
 
     lin_y_L = torch.pow(10.0, -y_L / 20.0)  # convert back to linear
     y = lin_y_L * x  # apply gain

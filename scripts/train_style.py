@@ -4,11 +4,11 @@ import pytorch_lightning as pl
 from argparse import ArgumentParser
 from pytorch_lightning.plugins import DDPPlugin
 
-from deepafx2.system import System
-from deepafx2.utils import system_summary
-from deepafx2.callbacks.audio import LogAudioCallback
-from deepafx2.callbacks.params import LogParametersCallback
-from deepafx2.callbacks.ckpt import CopyPretrainedCheckpoints
+from deepafx_st.system import System
+from deepafx_st.utils import system_summary
+from deepafx_st.callbacks.audio import LogAudioCallback
+from deepafx_st.callbacks.params import LogParametersCallback
+from deepafx_st.callbacks.ckpt import CopyPretrainedCheckpoints
 
 if __name__ == "__main__":
 

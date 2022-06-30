@@ -6,9 +6,9 @@ import argparse
 import torchaudio
 import numpy as np
 
-from deepafx2.utils import DSPMode
-from deepafx2.utils import count_parameters
-from deepafx2.system import System
+from deepafx_st.utils import DSPMode
+from deepafx_st.utils import count_parameters
+from deepafx_st.system import System
 
 if __name__ == "__main__":
 

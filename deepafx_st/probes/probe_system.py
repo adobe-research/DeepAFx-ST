@@ -6,13 +6,13 @@ import pytorch_lightning as pl
 from typing import Tuple, List, Dict
 from argparse import ArgumentParser
 
-from deepafx2.probes.cdpam_encoder import CDPAMEncoder
-from deepafx2.probes.random_mel import RandomMelProjection
+from deepafx_st.probes.cdpam_encoder import CDPAMEncoder
+from deepafx_st.probes.random_mel import RandomMelProjection
 
-import deepafx2.utils as utils
-from deepafx2.utils import DSPMode
-from deepafx2.system import System
-from deepafx2.data.style import StyleDataset
+import deepafx_st.utils as utils
+from deepafx_st.utils import DSPMode
+from deepafx_st.system import System
+from deepafx_st.data.style import StyleDataset
 
 
 class ProbeSystem(pl.LightningModule):
