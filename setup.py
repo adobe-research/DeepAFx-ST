@@ -4,7 +4,7 @@ from importlib.machinery import SourceFileLoader
 with open("README.md") as file:
     long_description = file.read()
 
-version = SourceFileLoader("deepafx2.version", "deepafx2/version.py").load_module()
+version = SourceFileLoader("deepafx_st.version", "deepafx_st/version.py").load_module()
 
 setup(
     name="deepafx-st",

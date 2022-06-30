@@ -9,8 +9,8 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import ConfusionMatrixDisplay, accuracy_score, f1_score
 from sklearn.metrics import classification_report
 
-from deepafx2.data.style import StyleDataset
-from deepafx2.probes.probe_system import ProbeSystem
+from deepafx_st.data.style import StyleDataset
+from deepafx_st.probes.probe_system import ProbeSystem
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()

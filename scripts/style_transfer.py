@@ -11,13 +11,13 @@ import scipy.signal
 import matplotlib
 import matplotlib.pyplot as plt
 
-from deepafx2.utils import DSPMode
-from deepafx2.utils import loudness_normalize
-from deepafx2.processors.dsp.peq import biqaud, parametric_eq
-from deepafx2.processors.dsp.compressor import compressor
-from deepafx2.system import System
-from deepafx2.models.baselines import BaselineEQAndComp
-from deepafx2.metrics import (
+from deepafx_st.utils import DSPMode
+from deepafx_st.utils import loudness_normalize
+from deepafx_st.processors.dsp.peq import biqaud, parametric_eq
+from deepafx_st.processors.dsp.compressor import compressor
+from deepafx_st.system import System
+from deepafx_st.models.baselines import BaselineEQAndComp
+from deepafx_st.metrics import (
     LoudnessError,
     RMSEnergyError,
     SpectralCentroidError,

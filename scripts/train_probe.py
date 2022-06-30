@@ -3,7 +3,7 @@ import torch
 import pytorch_lightning as pl
 from argparse import ArgumentParser
 
-from deepafx2.probes.probe_system import ProbeSystem
+from deepafx_st.probes.probe_system import ProbeSystem
 
 torch.backends.cudnn.benchmark = True
 pl.seed_everything(42)

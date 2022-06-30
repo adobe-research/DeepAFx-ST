@@ -2,7 +2,7 @@ import numpy as np
 import scipy.signal
 import matplotlib.pyplot as plt
 
-from deepafx2.processors.dsp.peq import biqaud
+from deepafx_st.processors.dsp.peq import biqaud
 
 
 def plot_peq_response(

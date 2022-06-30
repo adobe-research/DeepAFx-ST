@@ -10,10 +10,10 @@ import scipy.signal
 import matplotlib
 import matplotlib.pyplot as plt
 
-from deepafx2.utils import DSPMode
-from deepafx2.utils import get_random_patch
-from deepafx2.processors.dsp.peq import biqaud
-from deepafx2.system import System
+from deepafx_st.utils import DSPMode
+from deepafx_st.utils import get_random_patch
+from deepafx_st.processors.dsp.peq import biqaud
+from deepafx_st.system import System
 
 
 def plot_peq_response(

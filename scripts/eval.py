@@ -10,11 +10,11 @@ import numpy as np
 import pytorch_lightning as pl
 from multiprocessing import process
 
-from deepafx2.utils import DSPMode, seed_worker
-from deepafx2.system import System
-from deepafx2.data.dataset import AudioDataset
-from deepafx2.models.baselines import BaselineEQAndComp
-from deepafx2.metrics import (
+from deepafx_st.utils import DSPMode, seed_worker
+from deepafx_st.system import System
+from deepafx_st.data.dataset import AudioDataset
+from deepafx_st.models.baselines import BaselineEQAndComp
+from deepafx_st.metrics import (
     LoudnessError,
     RMSEnergyError,
     SpectralCentroidError,
