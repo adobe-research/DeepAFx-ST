@@ -208,8 +208,8 @@ if __name__ == "__main__":
 
     # --------------- setup pre-trained model ---------------
     models = {}
-    peq_ckpt = "/import/c4dm-datasets/deepafx2/logs/proxies/libritts/peq/lightning_logs/version_1/checkpoints/epoch=111-step=139999-val-libritts-peq.ckpt"
-    comp_ckpt = "/import/c4dm-datasets/deepafx2/logs/proxies/libritts/comp/lightning_logs/version_1/checkpoints/epoch=255-step=319999-val-libritts-comp.ckpt"
+    peq_ckpt = "/import/c4dm-datasets/deepafx_st/logs/proxies/libritts/peq/lightning_logs/version_1/checkpoints/epoch=111-step=139999-val-libritts-peq.ckpt"
+    comp_ckpt = "/import/c4dm-datasets/deepafx_st/logs/proxies/libritts/comp/lightning_logs/version_1/checkpoints/epoch=255-step=319999-val-libritts-comp.ckpt"
 
     for ckpt_path in args.ckpt_paths:
         model_name = os.path.basename(ckpt_path).replace(".ckpt", "")

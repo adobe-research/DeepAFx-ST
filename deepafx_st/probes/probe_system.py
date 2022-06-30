@@ -21,10 +21,10 @@ class ProbeSystem(pl.LightningModule):
         audio_dir=None,
         num_classes=5,
         task="style",
-        encoder_type="deepafx2_autodiff",
-        deepafx2_autodiff_ckpt=None,
-        deepafx2_spsa_ckpt=None,
-        deepafx2_proxy0_ckpt=None,
+        encoder_type="deepafx_st_autodiff",
+        deepafx_st_autodiff_ckpt=None,
+        deepafx_st_spsa_ckpt=None,
+        deepafx_st_proxy0_ckpt=None,
         probe_type="linear",
         batch_size=32,
         lr=3e-4,
@@ -39,25 +39,25 @@ class ProbeSystem(pl.LightningModule):
         super().__init__()
         self.save_hyperparameters()
 
-        if "deepafx2" in self.hparams.encoder_type:
+        if "deepafx_st" in self.hparams.encoder_type:
 
             if "autodiff" in self.hparams.encoder_type:
-                self.hparams.deepafx2_ckpt = self.hparams.deepafx2_autodiff_ckpt
+                self.hparams.deepafx_st_ckpt = self.hparams.deepafx_st_autodiff_ckpt
             elif "spsa" in self.hparams.encoder_type:
-                self.hparams.deepafx2_ckpt = self.hparams.deepafx2_spsa_ckpt
+                self.hparams.deepafx_st_ckpt = self.hparams.deepafx_st_spsa_ckpt
             elif "proxy0" in self.hparams.encoder_type:
-                self.hparams.deepafx2_ckpt = self.hparams.deepafx2_proxy0_ckpt
+                self.hparams.deepafx_st_ckpt = self.hparams.deepafx_st_proxy0_ckpt
 
             else:
                 raise RuntimeError(f"Invalid encoder_type: {self.hparams.encoder_type}")
 
-            if self.hparams.deepafx2_ckpt is None:
+            if self.hparams.deepafx_st_ckpt is None:
                 raise RuntimeError(
                     f"Must supply {self.hparams.encoder_type}_ckpt checkpoint."
                 )
             use_dsp = DSPMode.NONE
             system = System.load_from_checkpoint(
-                self.hparams.deepafx2_ckpt,
+                self.hparams.deepafx_st_ckpt,
                 use_dsp=use_dsp,
                 batch_size=self.hparams.batch_size,
                 spsa_parallel=False,
@@ -116,7 +116,7 @@ class ProbeSystem(pl.LightningModule):
     def forward(self, x):
         bs, chs, samp = x.size()
         with torch.no_grad():
-            if "deepafx2" in self.hparams.encoder_type:
+            if "deepafx_st" in self.hparams.encoder_type:
                 x /= x.abs().max()
                 x *= 10 ** (-12.0 / 20)  # with min 12 dBFS headroom
                 e = self.encoder(x)
@@ -278,9 +278,9 @@ class ProbeSystem(pl.LightningModule):
         parser.add_argument("--task", type=str, default="style")
         parser.add_argument("--encoder_sample_rate", type=int, default=24000)
         # --- deeapfx2  ---
-        parser.add_argument("--deepafx2_autodiff_ckpt", type=str)
-        parser.add_argument("--deepafx2_spsa_ckpt", type=str)
-        parser.add_argument("--deepafx2_proxy0_ckpt", type=str)
+        parser.add_argument("--deepafx_st_autodiff_ckpt", type=str)
+        parser.add_argument("--deepafx_st_spsa_ckpt", type=str)
+        parser.add_argument("--deepafx_st_proxy0_ckpt", type=str)
 
         # --- cdpam  ---
         parser.add_argument("--cdpam_ckpt", type=str)

@@ -125,8 +125,24 @@ Simply call the `scripts/process.py` passing your input audio `-i` along with yo
 ```
 python scripts/process.py -i <input_audio>.wav -r <ref_audio>.wav -c <checkpoint.ckpt> 
 
-# For example:
+# Autodiff speech model
 python scripts/process.py -i examples/voice_raw.wav -r examples/voice_produced.wav -c ./checkpoints/style/libritts/autodiff/lightning_logs/version_1/checkpoints/epoch=367-step=1226911-val-libritts-autodiff.ckpt
+
+# Proxy0 speech model
+python scripts/process.py -i examples/voice_raw.wav -r examples/voice_produced.wav -c ./checkpoints/style/libritts/proxy0/lightning_logs/version_0/checkpoints/epoch\=327-step\=1093551-val-libritts-proxy0.ckpt
+
+# Proxy2 speech model
+python scripts/process.py -i examples/voice_raw.wav -r examples/voice_produced.wav -c ./checkpoints/style/libritts/proxy2/lightning_logs/version_0/checkpoints/epoch\=84-step\=283389-val-libritts-proxy2.ckpt 
+
+# SPSA speech model
+python scripts/process.py -i examples/voice_raw.wav -r examples/voice_produced.wav -c  checkpoints/style/libritts/spsa/lightning_logs/version_2/checkpoints/epoch\=367-step\=1226911-val-libritts-spsa.ckpt 
+
+# TCN1 speech model
+python scripts/process.py -i examples/voice_raw.wav -r examples/voice_produced.wav -c  checkpoints/style/libritts/tcn1/lightning_logs/version_1/checkpoints/epoch\=367-step\=1226911-val-libritts-tcn1.ckpt 
+
+# TCN2 speech model
+python scripts/process.py -i examples/voice_raw.wav -r examples/voice_produced.wav -c  checkpoints/style/libritts/tcn2/lightning_logs/version_1/checkpoints/epoch\=396-step\=1323597-val-libritts-tcn2.ckpt 
+
 ```
 
 ## Training

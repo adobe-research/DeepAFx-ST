@@ -1,15 +1,15 @@
 # all probes
 CUDA_VISIBLE_DEVICES=0 python scripts/eval_probes.py \
---ckpt_dir /import/c4dm-datasets/deepafx2/logs/probes_100/speech \
---eval_dataset /import/c4dm-datasets/deepafx2/daps_24000_styles_100/ \
+--ckpt_dir /import/c4dm-datasets/deepafx_st/logs/probes_100/speech \
+--eval_dataset /import/c4dm-datasets/deepafx_st/daps_24000_styles_100/ \
 --subset test \
 --audio_type speech \
 --output_dir probes \
 --gpu \
 
 CUDA_VISIBLE_DEVICES=0 python scripts/eval_probes.py \
---ckpt_dir /import/c4dm-datasets/deepafx2/logs/probes_100/music \
---eval_dataset /import/c4dm-datasets/deepafx2/musdb18_44100_styles_100/ \
+--ckpt_dir /import/c4dm-datasets/deepafx_st/logs/probes_100/music \
+--eval_dataset /import/c4dm-datasets/deepafx_st/musdb18_44100_styles_100/ \
 --audio_type music \
 --subset test \
 --output_dir probes \
@@ -31,7 +31,7 @@ true acc: 100.00%  f1: 1.00
    macro avg       1.00      1.00      1.00       100
 weighted avg       1.00      1.00      1.00       100
 
-deepafx2_spsa-linear acc: 96.00%  f1: 0.96
+deepafx_st_spsa-linear acc: 96.00%  f1: 0.96
               precision    recall  f1-score   support
 
    broadcast       0.94      0.85      0.89        20
@@ -44,7 +44,7 @@ deepafx2_spsa-linear acc: 96.00%  f1: 0.96
    macro avg       0.96      0.96      0.96       100
 weighted avg       0.96      0.96      0.96       100
 
-deepafx2_proxy0-linear acc: 100.00%  f1: 1.00
+deepafx_st_proxy0-linear acc: 100.00%  f1: 1.00
               precision    recall  f1-score   support
 
    broadcast       1.00      1.00      1.00        20
@@ -96,7 +96,7 @@ cdpam-linear acc: 76.00%  f1: 0.73
    macro avg       0.84      0.76      0.73       100
 weighted avg       0.84      0.76      0.73       100
 
-deepafx2_autodiff-linear acc: 100.00%  f1: 1.00
+deepafx_st_autodiff-linear acc: 100.00%  f1: 1.00
               precision    recall  f1-score   support
 
    broadcast       1.00      1.00      1.00        20
@@ -110,8 +110,8 @@ deepafx2_autodiff-linear acc: 100.00%  f1: 1.00
 weighted avg       1.00      1.00      1.00       100
 
 -------------------------------------------------------
-epoch=4-step=94-val-deepafx2_spsa-linear.ckpt
-epoch=399-step=7599-val-deepafx2_proxy0-linear.ckpt
+epoch=4-step=94-val-deepafx_st_spsa-linear.ckpt
+epoch=399-step=7599-val-deepafx_st_proxy0-linear.ckpt
 Proxy Processor: peq @ fs=24000 Hz
 TCN receptive field: 7021 samples  or 292.542 ms
 Proxy Processor: comp @ fs=24000 Hz
@@ -119,7 +119,7 @@ TCN receptive field: 7021 samples  or 292.542 ms
 epoch=86-step=1652-val-openl3-linear.ckpt
 epoch=399-step=7599-val-random_mel-linear.ckpt
 epoch=398-step=7580-val-cdpam-linear.ckpt
-epoch=399-step=7599-val-deepafx2_autodiff-linear.ckpt
+epoch=399-step=7599-val-deepafx_st_autodiff-linear.ckpt
 100%|███████████████████████████████████████████████████████████████████████████████████| 20/20 [00:00<00:00, 40.57it/s]
 100%|███████████████████████████████████████████████████████████████████████████████████| 20/20 [00:00<00:00, 45.07it/s]
 100%|███████████████████████████████████████████████████████████████████████████████████| 20/20 [00:00<00:00, 44.43it/s]
@@ -143,7 +143,7 @@ true acc: 100.00%  f1: 1.00
    macro avg       1.00      1.00      1.00       100
 weighted avg       1.00      1.00      1.00       100
 
-deepafx2_spsa-linear acc: 64.00%  f1: 0.63
+deepafx_st_spsa-linear acc: 64.00%  f1: 0.63
               precision    recall  f1-score   support
 
    broadcast       0.23      0.30      0.26        20
@@ -156,7 +156,7 @@ deepafx2_spsa-linear acc: 64.00%  f1: 0.63
    macro avg       0.62      0.64      0.63       100
 weighted avg       0.62      0.64      0.63       100
 
-deepafx2_proxy0-linear acc: 82.00%  f1: 0.82
+deepafx_st_proxy0-linear acc: 82.00%  f1: 0.82
               precision    recall  f1-score   support
 
    broadcast       0.65      0.55      0.59        20
@@ -208,7 +208,7 @@ cdpam-linear acc: 60.00%  f1: 0.51
    macro avg       0.46      0.60      0.51       100
 weighted avg       0.46      0.60      0.51       100
 
-deepafx2_autodiff-linear acc: 79.00%  f1: 0.79
+deepafx_st_autodiff-linear acc: 79.00%  f1: 0.79
               precision    recall  f1-score   support
 
    broadcast       0.52      0.55      0.54        20

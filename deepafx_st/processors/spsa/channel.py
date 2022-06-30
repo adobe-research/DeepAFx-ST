@@ -57,7 +57,7 @@ class SPSAChannel(torch.nn.Module):
                 p = mp.Process(target=SPSAChannel.worker_pipe, args=(child_conn, dsp))
                 p.start()
                 procs[b] = [p, parent_conn, child_conn]
-                print(b, p)
+                #print(b, p)
 
                 # Update stuff for external public members TODO: fix
                 self.ports = [peq.ports, comp.ports]
@@ -66,7 +66,7 @@ class SPSAChannel(torch.nn.Module):
                 )
 
             self.procs = procs
-            print(self.procs)
+            #print(self.procs)
 
         else:
             self.peq = ParametricEQ(sample_rate)
@@ -84,7 +84,7 @@ class SPSAChannel(torch.nn.Module):
     def __del__(self):
         if hasattr(self, "procs"):
             for proc_idx, proc in self.procs.items():
-                print(f"Closing {proc_idx}...")
+                #print(f"Closing {proc_idx}...")
                 proc[0].terminate()
 
     def forward(self, x, p, epsilon=0.001, sample_rate=24000, **kwargs):

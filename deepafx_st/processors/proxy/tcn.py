@@ -164,10 +164,10 @@ class ConditionalTCN(torch.nn.Module):
 
         self.output = torch.nn.Conv1d(out_ch, noutputs, kernel_size=1)
         self.receptive_field = self.compute_receptive_field()
-        print(
-            f"TCN receptive field: {self.receptive_field} samples",
-            f" or {(self.receptive_field/self.sample_rate)*1e3:0.3f} ms",
-        )
+        # print(
+        #     f"TCN receptive field: {self.receptive_field} samples",
+        #     f" or {(self.receptive_field/self.sample_rate)*1e3:0.3f} ms",
+        # )
 
     def forward(self, x, p, **kwargs):
 
