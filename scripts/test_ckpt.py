@@ -6,7 +6,7 @@ import pickle
 import pytorch_lightning as pl
 import deepafx_st
 
-# sys.modules["deepafx2"] = deepafx_st  # patch for name change
+# sys.modules["deepafx_st"] = deepafx_st  # patch for name change
 
 if __name__ == "__main__":
 
@@ -51,21 +51,21 @@ if __name__ == "__main__":
                     )
                 elif experiment == "probes":
                     if "speech" in ckpt_path:
-                        deepafx2_autodiff_ckpt = "checkpoints/style/libritts/autodiff/lightning_logs/version_1/checkpoints/epoch=367-step=1226911-val-libritts-autodiff.ckpt"
-                        deepafx2_spsa_ckpt = "checkpoints/style/libritts/spsa/lightning_logs/version_2/checkpoints/epoch=367-step=1226911-val-libritts-spsa.ckpt"
-                        deepafx2_proxy0_ckpt = "checkpoints/style/libritts/proxy0/lightning_logs/version_0/checkpoints/epoch=327-step=1093551-val-libritts-proxy0.ckpt"
+                        deepafx_st_autodiff_ckpt = "checkpoints/style/libritts/autodiff/lightning_logs/version_1/checkpoints/epoch=367-step=1226911-val-libritts-autodiff.ckpt"
+                        deepafx_st_spsa_ckpt = "checkpoints/style/libritts/spsa/lightning_logs/version_2/checkpoints/epoch=367-step=1226911-val-libritts-spsa.ckpt"
+                        deepafx_st_proxy0_ckpt = "checkpoints/style/libritts/proxy0/lightning_logs/version_0/checkpoints/epoch=327-step=1093551-val-libritts-proxy0.ckpt"
                     elif "music" in ckpt_path:
-                        deepafx2_autodiff_ckpt = "checkpoints/style/jamendo/autodiff/lightning_logs/version_0/checkpoints/epoch=362-step=1210241-val-jamendo-autodiff.ckpt"
-                        deepafx2_spsa_ckpt = "checkpoints/style/jamendo/spsa/lightning_logs/version_0/checkpoints/epoch=362-step=1210241-val-jamendo-spsa.ckpt"
-                        deepafx2_proxy0_ckpt = "checkpoints/style/jamendo/proxy0/lightning_logs/version_0/checkpoints/epoch=362-step=1210241-val-jamendo-proxy0.ckpt"
+                        deepafx_st_autodiff_ckpt = "checkpoints/style/jamendo/autodiff/lightning_logs/version_0/checkpoints/epoch=362-step=1210241-val-jamendo-autodiff.ckpt"
+                        deepafx_st_spsa_ckpt = "checkpoints/style/jamendo/spsa/lightning_logs/version_0/checkpoints/epoch=362-step=1210241-val-jamendo-spsa.ckpt"
+                        deepafx_st_proxy0_ckpt = "checkpoints/style/jamendo/proxy0/lightning_logs/version_0/checkpoints/epoch=362-step=1210241-val-jamendo-proxy0.ckpt"
 
                     model = (
                         deepafx_st.probes.probe_system.ProbeSystem.load_from_checkpoint(
                             ckpt_path,
                             strict=False,
-                            deepafx2_autodiff_ckpt=deepafx2_autodiff_ckpt,
-                            deepafx2_spsa_ckpt=deepafx2_spsa_ckpt,
-                            deepafx2_proxy0_ckpt=deepafx2_proxy0_ckpt,
+                            deepafx_st_autodiff_ckpt=deepafx_st_autodiff_ckpt,
+                            deepafx_st_spsa_ckpt=deepafx_st_spsa_ckpt,
+                            deepafx_st_proxy0_ckpt=deepafx_st_proxy0_ckpt,
                         )
                     )
                 elif experiment == "proxies":

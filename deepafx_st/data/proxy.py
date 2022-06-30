@@ -5,7 +5,7 @@ import torch
 import random
 from tqdm import tqdm
 
-# from deepafx2.plugins.channel import Channel
+
 from deepafx_st.processors.processor import Processor
 from deepafx_st.data.audio import AudioFile
 import deepafx_st.utils as utils

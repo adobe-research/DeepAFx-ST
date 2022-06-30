@@ -61,10 +61,10 @@ For more details, please see:
 
 ## Install & Usage
 
-Clone the repo, create a virtual environment, and then install the `deepafx2` package.
+Clone the repo, create a virtual environment, and then install the `deepafx_st` package.
 
 ```
-cd deepafx2
+cd deepafx_st
 
 # Option 1: Using virtual envs
 python -m venv env/
@@ -87,10 +87,10 @@ apt-get install sox
 Download pretrained models TODO: verify
 ```
 cd checkpoints
-wget https://github.com/csteinmetz1/deepafx2/releases/download/v0.0.0/proxies.tar.gz -O checkpoints
-wget https://github.com/csteinmetz1/deepafx2/releases/download/v0.0.0/style.tar.gz -O checkpoints
-wget https://github.com/csteinmetz1/deepafx2/releases/download/v0.0.0/probes.tar.gz -O checkpoints
-wget https://github.com/csteinmetz1/deepafx2/releases/download/v0.0.0/cdpam.tar.gz -O checkpoints
+wget https://github.com/csteinmetz1/deepafx_st/releases/download/v0.0.0/proxies.tar.gz -O checkpoints
+wget https://github.com/csteinmetz1/deepafx_st/releases/download/v0.0.0/style.tar.gz -O checkpoints
+wget https://github.com/csteinmetz1/deepafx_st/releases/download/v0.0.0/probes.tar.gz -O checkpoints
+wget https://github.com/csteinmetz1/deepafx_st/releases/download/v0.0.0/cdpam.tar.gz -O checkpoints
 
 ```
 

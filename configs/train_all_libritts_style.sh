@@ -1,6 +1,6 @@
 #!/bin/bash
 
-root_data_dir=/import/c4dm-datasets/deepafx2 # change this to reflect where you datasets are stored
+root_data_dir=/import/c4dm-datasets/deepafx_st # change this to reflect where you datasets are stored
 multi_gpu=0 # set to 1 to launch on sequential GPUs
 gpu_id=1 # starting GPU id 
 # by default start on GPU #1 (id=0)
