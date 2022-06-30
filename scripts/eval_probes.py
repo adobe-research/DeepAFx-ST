@@ -71,10 +71,25 @@ if __name__ == "__main__":
             continue
 
         print(os.path.basename(ckpt_path))
-        model = ProbeSystem.load_from_checkpoint(ckpt_path)
+        if "speech" in ckpt_path:
+            deepafx2_autodiff_ckpt = "checkpoints/style/libritts/autodiff/lightning_logs/version_1/checkpoints/epoch=367-step=1226911-val-libritts-autodiff.ckpt"
+            deepafx2_spsa_ckpt = "checkpoints/style/libritts/spsa/lightning_logs/version_2/checkpoints/epoch=367-step=1226911-val-libritts-spsa.ckpt"
+            deepafx2_proxy0_ckpt = "checkpoints/style/libritts/proxy0/lightning_logs/version_0/checkpoints/epoch=327-step=1093551-val-libritts-proxy0.ckpt"
+        elif "music" in ckpt_path:
+            deepafx2_autodiff_ckpt = "checkpoints/style/jamendo/autodiff/lightning_logs/version_0/checkpoints/epoch=362-step=1210241-val-jamendo-autodiff.ckpt"
+            deepafx2_spsa_ckpt = "checkpoints/style/jamendo/spsa/lightning_logs/version_0/checkpoints/epoch=362-step=1210241-val-jamendo-spsa.ckpt"
+            deepafx2_proxy0_ckpt = "checkpoints/style/jamendo/proxy0/lightning_logs/version_0/checkpoints/epoch=362-step=1210241-val-jamendo-proxy0.ckpt"
+
+        model = ProbeSystem.load_from_checkpoint(
+            ckpt_path,
+            strict=False,
+            deepafx2_autodiff_ckpt=deepafx2_autodiff_ckpt,
+            deepafx2_spsa_ckpt=deepafx2_spsa_ckpt,
+            deepafx2_proxy0_ckpt=deepafx2_proxy0_ckpt,
+        )
         model.eval()
         if args.gpu:
-            model.to("cuda:0")
+            model.cuda()
         models[model_name] = model
 
     # create evaluation dataset

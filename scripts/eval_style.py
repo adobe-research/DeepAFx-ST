@@ -23,7 +23,6 @@ from deepafx_st.metrics import (
     MelSpectralDistance,
 )
 
-
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
@@ -238,11 +237,11 @@ if __name__ == "__main__":
 
         # search for pre-trained models
         if "m" in processor_model_id:
-            peq_ckpt = "/import/c4dm-datasets/deepafx2/logs_music_proxies/proxies/jamendo/peq/lightning_logs/version_0/checkpoints/epoch=326-step=204374-val-jamendo-peq.ckpt"
-            comp_ckpt = "/import/c4dm-datasets/deepafx2/logs_music_proxies/proxies/jamendo/comp/lightning_logs/version_0/checkpoints/epoch=274-step=171874-val-jamendo-comp.ckpt"
+            peq_ckpt = "checkpoints/proxies/jamendo/peq/lightning_logs/version_0/checkpoints/epoch=326-step=204374-val-jamendo-peq.ckpt"
+            comp_ckpt = "checkpoints/proxies/jamendo/comp/lightning_logs/version_0/checkpoints/epoch=274-step=171874-val-jamendo-comp.ckpt"
         else:
-            peq_ckpt = "/import/c4dm-datasets/deepafx2/logs/proxies/libritts/peq/lightning_logs/version_1/checkpoints/epoch=111-step=139999-val-libritts-peq.ckpt"
-            comp_ckpt = "/import/c4dm-datasets/deepafx2/logs/proxies/libritts/comp/lightning_logs/version_1/checkpoints/epoch=255-step=319999-val-libritts-comp.ckpt"
+            peq_ckpt = "checkpoints/proxies/libritts/peq/lightning_logs/version_1/checkpoints/epoch=111-step=139999-val-libritts-peq.ckpt"
+            comp_ckpt = "checkpoints/proxies/libritts/comp/lightning_logs/version_1/checkpoints/epoch=255-step=319999-val-libritts-comp.ckpt"
 
         if processor_model_id == "proxy0" or processor_model_id == "proxy0m":
             # peq_ckpt = [pc for pc in pckpts if "peq" in pc][0]
