@@ -13,7 +13,7 @@ setup(
     author="See paper",
     author_email="See paper",
     url="https://git.corp.adobe.com/adobe-research/deepafx-st",
-    packages=["deepafx2"],
+    packages=["deepafx_st"],
     long_description=long_description,
     long_description_content_type="text/markdown",
     license="Copyright Adobe Inc.",
