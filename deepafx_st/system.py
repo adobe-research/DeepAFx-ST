@@ -46,6 +46,7 @@ class System(pl.LightningModule):
         elif self.hparams.processor_model == "autodiff":
             self.processor = AutodiffChannel(self.hparams.dsp_sample_rate)
         elif self.hparams.processor_model == "proxy0":
+            # print('self.hparams.proxy_ckpts,',self.hparams.proxy_ckpts)
             self.hparams.dsp_mode = DSPMode.NONE
             self.processor = ProxyChannel(
                 self.hparams.proxy_ckpts,
@@ -54,6 +55,7 @@ class System(pl.LightningModule):
                 sample_rate=self.hparams.dsp_sample_rate,
             )
         elif self.hparams.processor_model == "proxy1":
+            # print('self.hparams.proxy_ckpts,',self.hparams.proxy_ckpts)
             self.hparams.dsp_mode = DSPMode.INFER
             self.processor = ProxyChannel(
                 self.hparams.proxy_ckpts,
@@ -62,6 +64,7 @@ class System(pl.LightningModule):
                 sample_rate=self.hparams.dsp_sample_rate,
             )
         elif self.hparams.processor_model == "proxy2":
+            # print('self.hparams.proxy_ckpts,',self.hparams.proxy_ckpts)
             self.hparams.dsp_mode = DSPMode.TRAIN_INFER
             self.processor = ProxyChannel(
                 self.hparams.proxy_ckpts,

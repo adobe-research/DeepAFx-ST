@@ -41,7 +41,7 @@ class ProxySystem(pl.LightningModule):
     ):
         super().__init__()
         self.save_hyperparameters()
-        print(f"Proxy Processor: {processor} @ fs={sample_rate} Hz")
+        #print(f"Proxy Processor: {processor} @ fs={sample_rate} Hz")
 
         # construct both the true DSP...
         if self.hparams.processor == "peq":
