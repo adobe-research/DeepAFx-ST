@@ -61,7 +61,7 @@ For more details, please see:
 
 ## Install & Usage
 
-Clone the repo, create a virtual environment, and then install the `deepafx2` package.
+Clone the repo, create a virtual environment, and then install the `deepafx_st` package.
 
 ```
 cd deepafx2
@@ -79,20 +79,43 @@ conda activate deepafx-st
 pip install --upgrade pip
 pip install --pre -e .
 
+# Optional if using AWS for data
 pip install awscli
+
+# Linux install
 apt-get install libsndfile1
 apt-get install sox
+apt-get install ffmpeg
 ```
 
-Download pretrained models TODO: verify
-```
+Download pretrained models and example files
+```Bash
 cd checkpoints
-wget https://github.com/csteinmetz1/deepafx2/releases/download/v0.0.0/proxies.tar.gz -O checkpoints
-wget https://github.com/csteinmetz1/deepafx2/releases/download/v0.0.0/style.tar.gz -O checkpoints
-wget https://github.com/csteinmetz1/deepafx2/releases/download/v0.0.0/probes.tar.gz -O checkpoints
-wget https://github.com/csteinmetz1/deepafx2/releases/download/v0.0.0/cdpam.tar.gz -O checkpoints
-
+wget https://github.com/adobe-research/DeepAFx-ST/releases/download/v0.1.0/proxies.tar.gz -O checkpoints
+wget https://github.com/adobe-research/DeepAFx-ST/releases/download/v0.1.0/style.tar.gz -O checkpoints
+wget https://github.com/adobe-research/DeepAFx-ST/releases/download/v0.1.0/probes.tar.gz -O checkpoints
+wget https://github.com/adobe-research/DeepAFx-ST/releases/download/v0.1.0/cdpam.tar.gz -O checkpoints
+wget https://github.com/adobe-research/DeepAFx-ST/releases/download/v0.1.0/examples.tar.gz -O examples
 ```
+Note, you can also find our pretrained checkpoints via the Github UI stored in a tagged release at [https://github.com/adobe-research/DeepAFx-ST/tags](https://github.com/adobe-research/DeepAFx-ST/tags).
+
+Uncompress from tar.gz
+```Bash
+tar -xvf proxies.tar.gz probes.tar.gz style.tar.gz cdpam.tar.gz
+```
+
+After download and untar'ing, your `checkpoint` and `examples` folder structures should be the following:
+```Bash
+<DeepAFx-ST>/checkpoints/README.md
+<DeepAFx-ST>/checkpoints/cdpam/
+<DeepAFx-ST>/checkpoints/probes/
+<DeepAFx-ST>/checkpoints/proxies/
+<DeepAFx-ST>/checkpoints/style/
+<DeepAFx-ST>/examples/voice_raw.wav
+<DeepAFx-ST>/examples/voice_produced.wav
+```
+You can discard the *tar.gz files or store for backup. 
+
 
 ## Inference
 
@@ -122,6 +145,7 @@ You can download individual datasets if desired.
 ```
 python scripts/download.py --datasets daps --output /path/to/output --download --process
 ```
+Note, data download can take several days due to the dataset server speeds. We recommend downloading once and making your own storage setup.
 
 ### Style transfer
 
