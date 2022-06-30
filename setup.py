@@ -12,7 +12,7 @@ setup(
     description="DeepAFx-ST",
     author="See paper",
     author_email="See paper",
-    url="https://git.corp.adobe.com/adobe-research/deepafx-st",
+    url="https://github.com/adobe-research/DeepAFx-ST",
     packages=["deepafx_st"],
     long_description=long_description,
     long_description_content_type="text/markdown",
