@@ -35,40 +35,9 @@ def resample_file(spkr_file, sr):
 
 
 def ffmpeg_resample(input_avfile, output_audiofile, sr, channels=None):
-    """
-    Convert a video or audio file to a resampled audio file with the desired
-    sampling rate specified by `sr`.
-
-    Parameters
-    ----------
-    input_avfile : string
-        Path to the video or audio file to be resampled.
-    output_audiofile
-        Path for saving the resampled audio file. Should have .wav extension.
-    sr : int
-        The sampling rate to use for resampling (e.g. 16000, 44100, 48000).
-
-    Returns
-    -------
-    completed_process : subprocess.CompletedProcess
-        A process completion object. If completed_process.returncode is 0 it
-        means the process completed successfully. 1 means it failed.
-    """
-    # NOTE: soxr resampler is higher quality than default ffmpeg resampler
-    cmd = [
-        "ffmpeg",
-        "-y",
-        "-i",
-        input_avfile,
-        "-ar",
-        str(sr),
-        "-ac",
-        str(1),
-        output_audiofile,
-        "-hide_banner",
-        "-loglevel",
-        "panic",
-    ]
+    cmd = ["ffmpeg", "-y", "-i", input_avfile,
+        "-ar", str(sr), "-ac", str(1), output_audiofile,
+        "-hide_banner", "-loglevel", "panic", ]
     completed_process = subprocess.run(cmd)
     return completed_process
 
@@ -167,35 +136,6 @@ def process_daps_dataset(output_dir):
                     )
                     sf.write(out_filepath, audio, sr)
 
-
-def download_daps_dataset_internal(output_dir, sr=22050):
-    """Download and resample the DAPS dataset to a given sample rate."""
-
-    orig_output_dir = os.path.join(output_dir, "daps")
-    new_output_dir = os.path.join(output_dir, f"daps_{sr}")
-
-    cmd = f"aws s3 sync s3://audio-daps {orig_output_dir}"
-    print(cmd)
-    os.system(cmd)
-
-    if os.path.isdir(new_output_dir):
-        os.system(f"rm -rf {new_output_dir}")
-
-    # Copy all the files in original download to new directory
-    shutil.copytree(orig_output_dir, new_output_dir)
-
-    inputPathFiles = utils.getFilesPath(orig_output_dir, "*.wav")
-    outputPathFiles = utils.getFilesPath(new_output_dir, "*.wav")
-
-    inputPathFiles.sort()
-    outputPathFiles.sort()
-    tfm = sox.Transformer()
-
-    for i, j in zip(inputPathFiles, outputPathFiles):
-        tfm.rate(sr, quality="h")
-        tfm.build(i, j)
-
-
 def download_vctk_dataset(output_dir):
 
     if not os.path.isdir(output_dir):
@@ -250,38 +190,6 @@ def process_vctk_dataset(output_dir, num_workers=16):
                 sf.write(out_filepath, x, sr)
             else:
                 print(f"{spkr_dir} contained no audio files.")
-
-
-def download_vctk_dataset_internal(output_dir, sr=22050):
-    output_dir = os.path.join(output_dir, "vctk")
-    cmd = f"aws s3 sync s3://audio-vctk {output_dir}"
-    print(cmd)
-    os.system(cmd)
-
-    spkr_dirs = glob.glob(os.path.join(output_dir, "wav48", "*"))
-
-    resampled_output_dir = os.path.join(output_dir, f"wav_{sr}c")
-    if not os.path.isdir(resampled_output_dir):
-        os.makedirs(resampled_output_dir)
-
-    for spkr_dir in spkr_dirs:
-        print(spkr_dir)
-        # get all files in speaker directory
-        spkr_files = glob.glob(os.path.join(spkr_dir, "*.flac"))
-        spkr_id = os.path.basename(spkr_dir)
-
-        if len(spkr_files) > 0:
-            with multiprocessing.Pool(16) as pool:
-                audios = pool.starmap(
-                    resample_file,
-                    zip(spkr_files, itertools.repeat(sr)),
-                )
-            # combine all audio files into one long file
-            x = np.concatenate(audios, axis=-1)
-
-            out_filepath = os.path.join(resampled_output_dir, f"{spkr_id}.wav")
-            sf.write(out_filepath, x, sr)
-        print(f"{spkr_dir} contained no audio files.")
 
 
 def download_libritts_dataset(output_dir, sr=24000):
