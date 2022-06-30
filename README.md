@@ -64,7 +64,7 @@ For more details, please see:
 Clone the repo, create a virtual environment, and then install the `deepafx_st` package.
 
 ```
-cd deepafx2
+cd <DeepAFx-ST>
 
 # Option 1: Using virtual envs
 python -m venv env/
