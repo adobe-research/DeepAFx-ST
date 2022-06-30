@@ -498,31 +498,31 @@ if __name__ == "__main__":
             if args.download:
                 download_daps_dataset(args.output)
             if args.process:
-                process_daps_dataset(args.ouput)
+                process_daps_dataset(args.output)
         elif dataset == "vctk":
             print("Downloading VCTK...")
             if args.download:
-                download_vctk_dataset(args.output, num_workers=args.num_workers)
+                download_vctk_dataset(args.output)
             if args.process:
-                process_vctk_dataset(args.ouput)
+                process_vctk_dataset(args.output)
         elif dataset == "libritts":
             print("Downloading LibriTTS...")
             if args.download:
                 download_libritts_dataset(args.output)
             if args.process:
-                process_libritts_dataset(args.ouput)
+                process_libritts_dataset(args.output)
         elif dataset == "jamendo":
             print(f"Downloading Jamendo dataset...")
             if args.download:
                 download_jamendo_dataset(args.output)
             if args.process:
-                process_jamendo_dataset(args.ouput)
+                process_jamendo_dataset(args.output)
         elif dataset == "musdb":
             print(f"Downloading MUSDB dataset...")
             if args.download:
                 download_musdb_dataset(args.output)
             if args.process:
-                process_musdb_dataset(args.ouput)
+                process_musdb_dataset(args.output)
         else:
             print("\nInvalid dataset.\n")
             parser.print_help()
