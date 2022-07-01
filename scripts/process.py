@@ -54,8 +54,12 @@ if __name__ == "__main__":
         logdir = os.path.dirname(os.path.dirname(args.ckpt))
         # Assumes speech proxies in specific location
         pckpts = 'checkpoints'
-        peq_ckpt = os.path.join(pckpts, "proxies/libritts/peq/lightning_logs/version_1/checkpoints/epoch=111-step=139999-val-libritts-peq.ckpt" )
-        comp_ckpt = os.path.join(pckpts, "proxies/libritts/comp/lightning_logs/version_1/checkpoints/epoch=255-step=319999-val-libritts-comp.ckpt" )
+        if 'proxy0m' in logdir or 'proxy2m' in logdir:
+            peq_ckpt = os.path.join(pckpts, "proxies/jamendo/peq/lightning_logs/version_0/checkpoints/epoch=326-step=204374-val-jamendo-peq.ckpt" )
+            comp_ckpt = os.path.join(pckpts, "proxies/jamendo/comp/lightning_logs/version_0/checkpoints/epoch=274-step=171874-val-jamendo-comp.ckpt" )
+        else:
+            peq_ckpt = os.path.join(pckpts, "proxies/libritts/peq/lightning_logs/version_1/checkpoints/epoch=111-step=139999-val-libritts-peq.ckpt" )
+            comp_ckpt = os.path.join(pckpts, "proxies/libritts/comp/lightning_logs/version_1/checkpoints/epoch=255-step=319999-val-libritts-comp.ckpt" )
 
         proxy_ckpts = [peq_ckpt, comp_ckpt]
         print(f"Found {len(proxy_ckpts)}: {proxy_ckpts}")

@@ -319,11 +319,17 @@ def process_jamendo_dataset(output_dir):
 
 
 def download_musdb_dataset(output_dir):
-    raise RuntimeError("MUSDB must be downloaded manually from https://zenodo.org/record/3338373.")
+    # from https://zenodo.org/record/3338373.
+    cmd = 'wget https://zenodo.org/record/3338373/files/musdb18hq.zip?download=1 -O ' + os.path.join(output_dir, 'musdb18.zip')
+    os.system(cmd)
+
+    cmd = 'unzip  ' + os.path.join(output_dir, 'musdb18.zip') + ' -d ' + os.path.join(output_dir, 'musdb18')
+    os.system(cmd)
+    
 
 def process_musdb_dataset(output_dir):
 
-    mix_files = glob.glob(os.path.join(output_dir, "**", "*.wav"))
+    mix_files = glob.glob(os.path.join(output_dir, 'musdb18', "**", "*.wav"), recursive=True)
     mix_files = [mix_file for mix_file in mix_files if "mix" in mix_file]
 
     for sr in [24000]:

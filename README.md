@@ -117,6 +117,8 @@ Simply call the `scripts/process.py` passing your input audio `-i` along with yo
 ```
 python scripts/process.py -i <input_audio>.wav -r <ref_audio>.wav -c <checkpoint.ckpt> 
 
+# Speech models
+
 # Autodiff speech model
 python scripts/process.py -i examples/voice_raw.wav -r examples/voice_produced.wav -c ./checkpoints/style/libritts/autodiff/lightning_logs/version_1/checkpoints/epoch=367-step=1226911-val-libritts-autodiff.ckpt
 
@@ -134,6 +136,32 @@ python scripts/process.py -i examples/voice_raw.wav -r examples/voice_produced.w
 
 # TCN2 speech model
 python scripts/process.py -i examples/voice_raw.wav -r examples/voice_produced.wav -c  checkpoints/style/libritts/tcn2/lightning_logs/version_1/checkpoints/epoch\=396-step\=1323597-val-libritts-tcn2.ckpt 
+
+# Music models
+
+# Autodiff music model
+python scripts/process.py -i examples/voice_raw.wav -r examples/voice_produced.wav -c checkpoints/style/jamendo/autodiff/lightning_logs/version_0/checkpoints/epoch\=362-step\=1210241-val-jamendo-autodiff.ckpt
+
+# Proxy0 music model
+python scripts/process.py -i examples/voice_raw.wav -r examples/voice_produced.wav -c checkpoints/style/jamendo/proxy0/lightning_logs/version_0/checkpoints/epoch\=362-step\=1210241-val-jamendo-proxy0.ckpt 
+
+# proxy0m music model 
+python scripts/process.py -i examples/voice_raw.wav -r examples/voice_produced.wav -c checkpoints/style/jamendo/proxy0m/lightning_logs/version_0/checkpoints/epoch\=331-step\=276887-val-jamendo-proxy0.ckpt 
+
+# Proxy2 music model
+python scripts/process.py -i examples/voice_raw.wav -r examples/voice_produced.wav -c checkpoints/style/jamendo/proxy2/lightning_logs/version_0/checkpoints/epoch\=8-step\=30005-val-jamendo-proxy2.ckpt 
+
+# Proxy2m music model
+python scripts/process.py -i examples/voice_raw.wav -r examples/voice_produced.wav -c checkpoints/style/jamendo/proxy2m/lightning_logs/version_0/checkpoints/epoch\=341-step\=285227-val-jamendo-proxy2.ckpt
+
+# SPSA music model
+python scripts/process.py -i examples/voice_raw.wav -r examples/voice_produced.wav -c checkpoints/style/jamendo/spsa/lightning_logs/version_0/checkpoints/epoch\=362-step\=1210241-val-jamendo-spsa.ckpt 
+
+# TCN1 music model
+python scripts/process.py -i examples/voice_raw.wav -r examples/voice_produced.wav -c checkpoints/style/jamendo/tcn1/lightning_logs/version_0/checkpoints/epoch\=362-step\=1210241-val-jamendo-tcn1.ckpt 
+
+# TCN2 music model
+python scripts/process.py -i examples/voice_raw.wav -r examples/voice_produced.wav -c checkpoints/style/jamendo/tcn2/lightning_logs/version_0/checkpoints/epoch\=286-step\=956857-val-jamendo-tcn2.ckpt 
 
 ```
 
