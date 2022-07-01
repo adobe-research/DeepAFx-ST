@@ -1,8 +1,8 @@
 #!/bin/bash
 
-root_data_dir=/import/c4dm-datasets/deepafx_st
+root_data_dir=/path/to/data
 multi_gpu=0 # set to 1 to launch on sequential GPUs
-gpu_id=1 # starting GPU id
+gpu_id=0 # starting GPU id
 # by default start on GPU #1 (id=0)
 checkpoint_dir="./checkpoints"
 
@@ -34,7 +34,7 @@ do
    --processor_model $processor_model \
    --gpus 1 \
    --audio_dir "$root_data_dir" \
-   --ext flac \
+   --ext wav \
    --input_dirs "mtg-jamendo_24000/" \
    --style_transfer \
    --buffer_size_gb 1.0 \

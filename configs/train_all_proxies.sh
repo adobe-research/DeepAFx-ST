@@ -1,8 +1,8 @@
 #!/bin/bash
 
-root_data_dir=/import/c4dm-datasets/deepafx_st 
+root_data_dir=/path/to/data
 multi_gpu=0 # set to 1 to launch on sequential GPUs
-gpu_id=1 # starting GPU id
+gpu_id=0 # starting GPU id
 
 for processor in  peq comp channel
 do
