@@ -71,7 +71,7 @@ python -m venv env/
 source env/bin/activate
 
 # Option 2: Using conda
-conda create -n deepafx-st python=3.8
+conda create -n deepafx-st python=3.8 -y
 conda activate deepafx-st
 
 
@@ -115,6 +115,7 @@ Apply pre-trained models to your own audio examples with the `process.py` script
 Simply call the `scripts/process.py` passing your input audio `-i` along with your reference `-r` and the path to a pretrained model checkpoint `-c.
 
 ```
+cd <DeepAFx-ST>
 python scripts/process.py -i <input_audio>.wav -r <ref_audio>.wav -c <checkpoint.ckpt> 
 
 # Speech models
@@ -194,6 +195,7 @@ You can launch training by calling the appropriate
 ./configs/train_all_libritts_style.sh
 ./configs/train_all_jamendo_style.sh
 ```
+Note, you will need to modify the data paths in the scripts above to fit your setup.
 
 There are four main configurations for training the style transfer models. 
 This is specified by the `--processor_model` flag when launching the training script, and
@@ -205,6 +207,7 @@ must be one of the following:
 4. `proxy2` - Neural network proxies with control parameters for audio processing.
 5. `spsa` - Gradient estimation with DSP audio effects using SPSA methods.
 6. `autodiff` - DSP audio effects implemnted directly in PyTorch.
+
 
 ### Proxy training
 
@@ -223,6 +226,7 @@ Linear probes for the production style classification task can be trained with t
 ```
 ./configs/train_all_probes.sh
 ```
+Note, some additional data pre-processing is required and needs updating.
 
 ## Style evaluation
 
@@ -276,4 +280,4 @@ GeForce GTX 1080 Ti
 
 
 ## License
-All code and models are licensed via the [Adobe Research License](LICENSE). Copyright (c) Adobe Systems Incorporated. All rights reserved.
+Unless otherwise specified via local comments per file, all code and models are licensed via the [Adobe Research License](LICENSE). Copyright (c) Adobe Systems Incorporated. All rights reserved.
