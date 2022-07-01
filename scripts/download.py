@@ -37,7 +37,7 @@ def resample_file(spkr_file, sr):
 def ffmpeg_resample(input_avfile, output_audiofile, sr, channels=None):
     cmd = ["ffmpeg", "-y", "-i", input_avfile,
         "-ar", str(sr), "-ac", str(1), output_audiofile,
-        "-hide_banner", "-loglevel", "panic", ]
+        "-hide_banner", "-loglevel", "error", ]
     completed_process = subprocess.run(cmd)
     return completed_process
 
@@ -56,19 +56,14 @@ def resample_dir(input_dir, output_dir, target_sr, channels=1, num_cpus=33):
 
     def par_resample(item):
         orig, new, sr = item
-        ffmpeg_resample(orig, new, sr, channels=channels)
+        ffmpeg_resample(orig, new, sr, channels=1)
         return True
 
-    if True:
-        results = Parallel(n_jobs=num_cpus)(
-            delayed(par_resample)(i) for i in tqdm(file_pairs)
-        )
-    else:
-        for item in tqdm(file_pairs):
-            orig, new, sr = item
-            ok = ffmpeg_resample(orig, new, sr, channels=1)
-            if not ok:
-                print(ok)
+
+    results = Parallel(n_jobs=num_cpus)(
+        delayed(par_resample)(i) for i in tqdm(file_pairs)
+    )
+
 
 
 def resample_file_torchaudio(spkr_file, sr):
@@ -319,34 +314,49 @@ def process_jamendo_dataset(output_dir):
 
 
 def download_musdb_dataset(output_dir):
-    raise RuntimeError("MUSDB must be downloaded manually from https://zenodo.org/record/3338373.")
+    # from https://zenodo.org/record/3338373.
+    cmd = 'wget https://zenodo.org/record/3338373/files/musdb18hq.zip?download=1 -O ' + os.path.join(output_dir, 'musdb18.zip')
+    os.system(cmd)
+
+    cmd = 'unzip  ' + os.path.join(output_dir, 'musdb18.zip') + ' -d ' + os.path.join(output_dir, 'musdb18')
+    os.system(cmd)
+    
 
 def process_musdb_dataset(output_dir):
+    
+    def resample_file(item):
+        orig, new, sr = item
+        x, sr_orig = sf.read(orig)
+        if sr_orig != sr:
+            x = resampy.resample(x, sr_orig, sr, axis=0)
+        
+        sf.write(new, x, sr)
+        return True
 
-    mix_files = glob.glob(os.path.join(output_dir, "**", "*.wav"))
+    
+    mix_files = glob.glob(os.path.join(output_dir, 'musdb18', "**", "*.wav"), recursive=True)
     mix_files = [mix_file for mix_file in mix_files if "mix" in mix_file]
 
+    items = []
     for sr in [24000]:
-
         resampled_output_dir = os.path.join(output_dir, f"musdb18_{sr}")
         if not os.path.isdir(resampled_output_dir):
             os.makedirs(resampled_output_dir)
-
-        with multiprocessing.Pool(16) as pool:
-            audios = pool.starmap(
-                resample_file,
-                zip(mix_files, itertools.repeat(sr)),
-            )
-
-        for mix_file, audio in tqdm(zip(mix_files, audios)):
-            # song_id = os.path.basename(mix_file).replace(" ", "_")
+        
+        for mix_file in mix_files:
             song_id = os.path.basename(os.path.dirname(mix_file)).replace(" ", "")
             out_filepath = os.path.join(
                 resampled_output_dir,
                 f"{song_id}.wav",
             )
-            print(out_filepath)
-            sf.write(out_filepath, audio, sr)
+            items.append((mix_file, out_filepath, sr))
+ 
+        
+    num_cpus = multiprocessing.cpu_count()
+    results = Parallel(n_jobs=num_cpus)(
+        delayed(resample_file)(i) for i in tqdm(items)
+    )
+
 
 
 if __name__ == "__main__":
