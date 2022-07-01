@@ -126,12 +126,11 @@ if __name__ == "__main__":
         encoder_model="efficient_net",
         embed_dim=1024,
         width_mult=1,
-        mel=False,
     )
     controller = StyleTransferController(
         channel_ad.num_control_params,
         1024,
-        bottleneck_dim=-1,
+        # bottleneck_dim=-1,
     )
 
     print()

@@ -138,7 +138,8 @@ class DSPProxyDataset(torch.utils.data.Dataset):
             input_file.load()
 
         # get a random patch of size `self.length`
-        start_idx, stop_idx = utils.get_random_patch(input_file, self.sample_rate, self.length)
+        # start_idx, stop_idx = utils.get_random_patch(input_file, self.sample_rate, self.length)
+        start_idx, stop_idx = utils.get_random_patch(input_file, self.length)
         input_audio = input_file.audio[:, start_idx:stop_idx].clone().detach()
 
         # random scaling

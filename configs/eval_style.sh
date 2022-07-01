@@ -1,8 +1,8 @@
-gpu_id=1
+gpu_id=0
 num_examples=1000 # number of evaluation examples per dataset
 checkpoint_dir="./checkpoints"
-root_dir="/import/c4dm-datasets/deepafx_st/" # path to audio datasets
-output_dir="/import/c4dm-datasets/deepafx_st/eval" # path to store audio utputs
+root_dir="/path/to/data" # path to audio datasets
+output_dir="/path/to/data/eval" # path to store audio outputs
 
 # ----------------------- LibriTTS ----------------------- 
 CUDA_VISIBLE_DEVICES="$gpu_id" python scripts/eval_style.py \

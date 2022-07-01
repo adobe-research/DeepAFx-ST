@@ -138,6 +138,7 @@ def get_random_patch(audio_file, length, energy_treshold=1e-4):
         start_idx (int): Starting sample index
         stop_idx (int): Stop sample index
     """
+
     silent = True
     while silent:
         start_idx = int(torch.rand(1) * (audio_file.num_frames - length))
@@ -250,27 +251,27 @@ def linear_fade(
     return x
 
 
-def get_random_patch(x, sample_rate, length_samples):
-    length = length_samples
-    silent = True
-    while silent:
-        start_idx = np.random.randint(0, x.shape[-1] - length - 1)
-        stop_idx = start_idx + length
-        x_crop = x[0:1, start_idx:stop_idx]
+# def get_random_patch(x, sample_rate, length_samples):
+#     length = length_samples
+#     silent = True
+#     while silent:
+#         start_idx = np.random.randint(0, x.shape[-1] - length - 1)
+#         stop_idx = start_idx + length
+#         x_crop = x[0:1, start_idx:stop_idx]
 
-        # check for silence
-        frames = length // sample_rate
-        silent_frames = []
-        for n in range(frames):
-            start_idx = n * sample_rate
-            stop_idx = start_idx + sample_rate
-            x_frame = x_crop[0:1, start_idx:stop_idx]
-            if (x_frame ** 2).mean() > 3e-4:
-                silent_frames.append(False)
-            else:
-                silent_frames.append(True)
-        silent = True if any(silent_frames) else False
+#         # check for silence
+#         frames = length // sample_rate
+#         silent_frames = []
+#         for n in range(frames):
+#             start_idx = n * sample_rate
+#             stop_idx = start_idx + sample_rate
+#             x_frame = x_crop[0:1, start_idx:stop_idx]
+#             if (x_frame ** 2).mean() > 3e-4:
+#                 silent_frames.append(False)
+#             else:
+#                 silent_frames.append(True)
+#         silent = True if any(silent_frames) else False
 
-    x_crop /= x_crop.abs().max()
+#     x_crop /= x_crop.abs().max()
 
-    return x_crop
+#     return x_crop

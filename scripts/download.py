@@ -59,10 +59,12 @@ def resample_dir(input_dir, output_dir, target_sr, channels=1, num_cpus=33):
         ffmpeg_resample(orig, new, sr, channels=1)
         return True
 
-
-    results = Parallel(n_jobs=num_cpus)(
-        delayed(par_resample)(i) for i in tqdm(file_pairs)
-    )
+    # FFMPEG seems to have issue when multi-threaded
+    # results = Parallel(n_jobs=num_cpus)(
+    #     delayed(par_resample)(i) for i in tqdm(file_pairs)
+    # )
+    for item in tqdm(file_pairs):
+        par_resample(item)
 
 
 
@@ -299,18 +301,19 @@ def download_jamendo_dataset(output_dir):
 
 def process_jamendo_dataset(output_dir):
 
-    set_dirs = glob.glob(os.path.join(output_dir, "*"))
-    set_dirs = [set_dir for set_dir in set_dirs if os.path.isdir(set_dir)]
-
-    for sr in [44100]:
-
+    num_cpus = multiprocessing.cpu_count()
+    set_dirs = []
+    for n in range(100):
+        set_dirs.append(os.path.join(output_dir, str(n)))
+    
+    for sr in [24000]:
         resampled_output_dir = os.path.join(output_dir, f"mtg-jamendo_{sr}")
         if not os.path.isdir(resampled_output_dir):
             os.makedirs(resampled_output_dir)
 
         for set_dir in set_dirs:
             # get all files in speaker directory
-            resample_dir(set_dir, resampled_output_dir, sr, channels=1, num_cpus=61)
+            resample_dir(set_dir, resampled_output_dir, sr, channels=1, num_cpus=num_cpus)
 
 
 def download_musdb_dataset(output_dir):
@@ -412,34 +415,43 @@ if __name__ == "__main__":
 
     for dataset in args.datasets:
         if dataset == "daps":
-            print("Downloading DAPS...")
+            
             if args.download:
+                print("Downloading DAPS...")
                 download_daps_dataset(args.output)
             if args.process:
+                print(f"Processing DAPS dataset...")
                 process_daps_dataset(args.output)
         elif dataset == "vctk":
-            print("Downloading VCTK...")
             if args.download:
+                print("Downloading VCTK...")
                 download_vctk_dataset(args.output)
             if args.process:
+                print(f"Processing VCTK dataset...")
                 process_vctk_dataset(args.output)
         elif dataset == "libritts":
-            print("Downloading LibriTTS...")
+            
             if args.download:
+                print("Downloading LibriTTS...")
                 download_libritts_dataset(args.output)
             if args.process:
+                print(f"Processing libriTTS dataset...")
                 process_libritts_dataset(args.output)
         elif dataset == "jamendo":
-            print(f"Downloading Jamendo dataset...")
+            
             if args.download:
+                print(f"Downloading Jamendo dataset...")
                 download_jamendo_dataset(args.output)
             if args.process:
+                print(f"Processing Jamendo dataset...")
                 process_jamendo_dataset(args.output)
         elif dataset == "musdb":
-            print(f"Downloading MUSDB dataset...")
+            
             if args.download:
+                print(f"Downloading MUSDB dataset...")
                 download_musdb_dataset(args.output)
             if args.process:
+                print(f"Processing MUSDB dataset...")
                 process_musdb_dataset(args.output)
         else:
             print("\nInvalid dataset.\n")
