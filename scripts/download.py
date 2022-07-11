@@ -341,7 +341,7 @@ def process_musdb_dataset(output_dir):
     mix_files = [mix_file for mix_file in mix_files if "mix" in mix_file]
 
     items = []
-    for sr in [24000]:
+    for sr in [24000, 44100]:
         resampled_output_dir = os.path.join(output_dir, f"musdb18_{sr}")
         if not os.path.isdir(resampled_output_dir):
             os.makedirs(resampled_output_dir)
