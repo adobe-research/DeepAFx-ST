@@ -18,9 +18,9 @@ do
       deepafx_st_proxy0_ckpt="$checkpoint_dir/style/libritts/proxy0/lightning_logs/version_0/checkpoints/epoch=327-step=1093551-val-libritts-proxy0.ckpt"
    elif [ "$audio_type" = "music" ]; then
       audio_dir="musdb18_44100_styles_100"
-      deepafx_st_autodiff_ckpt="$checkpoint_dir_jamendo/style/jamendo/autodiff/lightning_logs/version_0/checkpoints/epoch=362-step=1210241-val-jamendo-autodiff.ckpt"
-      deepafx_st_spsa_ckpt="$checkpoint_dir_jamendo/style/jamendo/spsa/lightning_logs/version_0/checkpoints/epoch=362-step=1210241-val-jamendo-spsa.ckpt"
-      deepafx_st_proxy0_ckpt="$checkpoint_dir_jamendo/style/jamendo/proxy0/lightning_logs/version_0/checkpoints/epoch=362-step=1210241-val-jamendo-proxy0.ckpt"
+      deepafx_st_autodiff_ckpt="$checkpoint_dir/jamendo/style/jamendo/autodiff/lightning_logs/version_0/checkpoints/epoch=362-step=1210241-val-jamendo-autodiff.ckpt"
+      deepafx_st_spsa_ckpt="$checkpoint_dir/jamendo/style/jamendo/spsa/lightning_logs/version_0/checkpoints/epoch=362-step=1210241-val-jamendo-spsa.ckpt"
+      deepafx_st_proxy0_ckpt="$checkpoint_dir/jamendo/style/jamendo/proxy0/lightning_logs/version_0/checkpoints/epoch=362-step=1210241-val-jamendo-proxy0.ckpt"
    fi
 
    for encoder_type in  random_mel openl3 deepafx_st_spsa deepafx_st_proxy0 deepafx_st_autodiff cdpam
