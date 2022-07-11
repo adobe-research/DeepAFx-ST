@@ -40,6 +40,6 @@ setup(
         "wget",
         "pesq",
         "umap-learn",
-        "setuptools=58.2.0"
+        "setuptools==58.2.0"
     ],
 )
