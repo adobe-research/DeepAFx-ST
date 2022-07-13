@@ -141,7 +141,10 @@ if __name__ == "__main__":
             style_subset_filepaths = style_subset_filepaths * len(styles)
 
             # copy style subset filepaths to create desired number of examples
-            style_subset_filepaths *= int(num_examples // len(style_subset_filepaths))
+            if num_examples > len(style_subset_filepaths):
+                style_subset_filepaths *= int(num_examples // len(style_subset_filepaths))
+            else:
+                style_subset_filepaths = style_subset_filepaths[:num_examples]
 
             for n, input_filepath in enumerate(tqdm(style_subset_filepaths, ncols=120)):
                 x, sr = torchaudio.load(input_filepath)  # load file
