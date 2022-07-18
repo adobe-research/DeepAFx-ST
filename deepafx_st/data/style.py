@@ -22,13 +22,14 @@ class StyleDataset(torch.utils.data.Dataset):
         self.style_dirs = glob.glob(os.path.join(audio_dir, subset, "*"))
         self.style_dirs = [sd for sd in self.style_dirs if os.path.isdir(sd)]
         self.num_classes = len(self.style_dirs)
-        self.class_labels = []
+        self.class_labels = {"broadcast" : 0, "telephone": 1, "neutral": 2, "bright": 3, "warm": 4}
 
         self.examples = []
         for n, style_dir in enumerate(self.style_dirs):
-            self.class_labels.append(os.path.basename(style_dir))
+
             # get all files in style dir
             style_filepaths = glob.glob(os.path.join(style_dir, "*.wav"))
+            style_name = os.path.basename(style_dir)
             for style_filepath in tqdm(style_filepaths, ncols=120):
                 # load audio file
                 x, sr = torchaudio.load(style_filepath)
@@ -46,7 +47,7 @@ class StyleDataset(torch.utils.data.Dataset):
                     x = x[...,:self.length]
 
                 # store example
-                example = (x, n)
+                example = (x, self.class_labels[style_name])
                 self.examples.append(example)
 
         print(f"Loaded {len(self.examples)} examples for {subset} subset.")
