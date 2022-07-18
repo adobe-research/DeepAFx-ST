@@ -57,7 +57,7 @@ CUDA_VISIBLE_DEVICES="$gpu_id" python scripts/eval_style.py \
 --root_dir "$root_dir" \
 --gpu \
 --dataset jamendo \
---dataset_dir "/mtg-jamendo-raw/mtg-jamendo-dataset/mtg-jamendo_24000/" \
+--dataset_dir "mtg-jamendo_24000/" \
 --spsa_version 0 \
 --tcn1_version 0 \
 --autodiff_version 0 \
@@ -74,7 +74,7 @@ CUDA_VISIBLE_DEVICES="$gpu_id" python scripts/eval_style.py \
 --root_dir "$root_dir" \
 --gpu \
 --dataset jamendo_44100 \
---dataset_dir "/mtg-jamendo-raw/mtg-jamendo-dataset/mtg-jamendo_24000/" \
+--dataset_dir "mtg-jamendo_44100/" \
 --spsa_version 0 \
 --tcn1_version 0 \
 --autodiff_version 0 \
