@@ -183,6 +183,13 @@ python scripts/download.py --datasets daps --output /path/to/output --download -
 ```
 Note, data download can take several days due to the dataset server speeds. We recommend downloading once and making your own storage setup. You will need approx. 1TB of local storage space to download and pre-process all datasets.
 
+For the style classifcation task we need to render the synthetic style datasets. This can be done for DAPS and MUSDB18 using the [`scripts/run_generate_styles.sh`](scripts/run_generate_styles.sh) script. 
+You will need to update the paths in this script to reflect your local file system and then call the script. 
+
+```
+./script/run_generate_styles.sh`
+``
+
 ### Style transfer
 
 A number of predefined training configurations are defined in bash scripts in the `configs/` directory.
