@@ -5,7 +5,7 @@
 Style transfer of audio effects with differentiable signal processing
 
 
-[![Demo](https://img.shields.io/badge/Web-Demo-blue)](https://csteinmetz1.github.io/deepafx-st)
+[![Demo](https://img.shields.io/badge/Web-Demo-blue)](https://csteinmetz1.github.io/DeepAFx-ST)
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](TBD)
 [![arXiv](https://img.shields.io/badge/arXiv-2010.04237-b31b1b.svg)](TBD)
 
