@@ -188,7 +188,7 @@ You will need to update the paths in this script to reflect your local file syst
 
 ```
 ./script/run_generate_styles.sh`
-``
+```
 
 ### Style transfer
 
