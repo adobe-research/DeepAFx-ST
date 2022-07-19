@@ -7,7 +7,7 @@ Style transfer of audio effects with differentiable signal processing
 
 [![Demo](https://img.shields.io/badge/Web-Demo-blue)](https://csteinmetz1.github.io/DeepAFx-ST)
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](TBD)
-[![arXiv](https://img.shields.io/badge/arXiv-2010.04237-b31b1b.svg)](TBD)
+[![arXiv](https://img.shields.io/badge/arXiv-2207.08759-b31b1b.svg)](https://arxiv.org/abs/2207.08759)
 
 <!-- <img width="700px" src="docs/new-generic-style-transfer-headline.svg"> -->
  
@@ -42,13 +42,14 @@ We present a framework that can impose the audio effects and production style fr
 In contrast to past work, we integrate audio effects as differentiable operators in our framework, perform backpropagation through audio effects, and optimize end-to-end using an audio-domain loss. We use a self-supervised training strategy enabling automatic control of audio effects without the use of any labeled or paired training data. We survey a range of existing and new approaches for differentiable signal processing, showing how each can be integrated into our framework while discussing their trade-offs. We evaluate our approach on both speech and music tasks, demonstrating that our approach generalizes both to unseen recordings and even to sample rates different than those seen during training. Our approach produces convincing production style transfer results with the ability to transform input recordings to produced recordings, yielding audio effect control parameters that enable interpretability and user interaction.
 
 For more details, please see:
-"[Style Transfer of Audio Effects with Differentiable Signal Processing](TBD)", [Christian J. Steinmetz](http://Christiansteinmetz.com), [Nicholas J. Bryan](https://ccrma.stanford.edu/~njb/), [Joshua D. Reiss](http://www.eecs.qmul.ac.uk/~josh/). arXiv, 2022. If you use ideas or code from this work, pleace cite our paper:
+"[Style Transfer of Audio Effects with Differentiable Signal Processing](https://arxiv.org/abs/2207.08759)", [Christian J. Steinmetz](http://Christiansteinmetz.com), [Nicholas J. Bryan](https://ccrma.stanford.edu/~njb/), [Joshua D. Reiss](http://www.eecs.qmul.ac.uk/~josh/). arXiv, 2022. If you use ideas or code from this work, pleace cite our paper:
 
 ```BibTex
-@article{Steinmetz2022DeepAFxST,
+@article{steinmetz2022style,
       title={Style Transfer of Audio Effects with Differentiable Signal Processing}, 
       author={Christian J. Steinmetz and Nicholas J. Bryan and Joshua D. Reiss},
       year={2022},
+      eprint={2207.08759},
       archivePrefix={arXiv},
       primaryClass={cs.SD}
 }
@@ -188,7 +189,7 @@ You will need to update the paths in this script to reflect your local file syst
 
 ```
 ./script/run_generate_styles.sh`
-``
+```
 
 ### Style transfer
 
