@@ -8,6 +8,7 @@ Style transfer of audio effects with differentiable signal processing
 [![Demo](https://img.shields.io/badge/Web-Demo-blue)](https://csteinmetz1.github.io/DeepAFx-ST)
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](TBD)
 [![arXiv](https://img.shields.io/badge/arXiv-2207.08759-b31b1b.svg)](https://arxiv.org/abs/2207.08759)
+[![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/nateraw/deepafx-st)
 
 <!-- <img width="700px" src="docs/new-generic-style-transfer-headline.svg"> -->
  
