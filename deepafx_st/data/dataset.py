@@ -237,8 +237,8 @@ class AudioDataset(torch.utils.data.Dataset):
             )[0]
 
         # peak normalize again before passing through dynamic range compressor
-        input_audio_corrupt /= input_audio_corrupt.abs().max()
-        input_audio_corrupt *= 10 ** (-12.0 / 20)  # with min 3 dBFS headroom
+        target_audio_corrupt /= target_audio_corrupt.abs().max()
+        target_audio_corrupt *= 10 ** (-12.0 / 20)  # with min 3 dBFS headroom
 
         if self.drc_corrupt and torch.rand(1).sum() < 0.75:
             target_audio_corrupt = augmentations.dynamic_range_compression(
